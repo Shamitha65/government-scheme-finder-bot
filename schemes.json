@@ -1,0 +1,178 @@
+[
+  {
+    "id": "aicte-kapila-patent-support",
+    "name": "KAPILA: Kalam Program for IP Literacy and Awareness (AICTE/MIC)",
+    "authority": "Ministry of Education's Innovation Cell (MIC) & AICTE",
+    "type": "patent_fee_support",
+    "who_applies": "institute",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "other_conditions": [
+        "Institute must have an active Institution's Innovation Council (IIC) or KAPILA portal registration",
+        "Application must be routed through and submitted by the college KAPILA/IIC coordinator, not individual students"
+      ]
+    },
+    "benefit": {
+      "description": "Financial reimbursement of official patent application filing fees",
+      "amount_inr": null,
+      "notes": "Reimbursement provided to the higher education institution upon successful submission and verification"
+    },
+    "documents_required": [
+      "Invention disclosure form / patent specification draft",
+      "Student bonafide enrollment certificate",
+      "Institute authorization and IIC endorsement letter"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Student discloses invention to college IIC / IP cell coordinator",
+      "College IP committee reviews patentability and prior art",
+      "Institute coordinator files on the official KAPILA portal"
+    ],
+    "source_url": "https://mic.gov.in/kapila",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  },
+  {
+    "id": "karnataka-startup-patent-support",
+    "name": "Karnataka Startup Mission Patent Support",
+    "authority": "Karnataka Innovation and Technology Society (KITS), Govt. of Karnataka",
+    "type": "patent_fee_support",
+    "who_applies": "iedc",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": ["Karnataka"],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": true,
+      "other_conditions": [
+        "Applicant must be enrolled in an engineering institution in Karnataka",
+        "College must have an active IEDC / New Age Incubation Network (NAIN) center through which application is forwarded"
+      ]
+    },
+    "benefit": {
+      "description": "Patent cost reimbursement and filing support for student inventions",
+      "amount_inr": null,
+      "notes": "Cost reimbursement is routed and facilitated via the college IEDC / NAIN coordinator"
+    },
+    "documents_required": [
+      "Provisional or complete patent draft specification",
+      "College IEDC / NAIN coordinator recommendation letter",
+      "Karnataka student domicile / bonafide proof"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Present prototype to college IEDC coordinator",
+      "IEDC reviews technical viability and issues recommendation",
+      "IEDC submits application package to Karnataka Startup Cell portal"
+    ],
+    "source_url": "https://www.startupindia.gov.in",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  },
+  {
+    "id": "kscst-ip-technical-assistance",
+    "name": "KSCST IP Technical Assistance",
+    "authority": "Karnataka State Council for Science and Technology (KSCST)",
+    "type": "technical_assistance",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": ["Karnataka"],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "other_conditions": [
+        "Technical invention originated within a Karnataka academic institution"
+      ]
+    },
+    "benefit": {
+      "description": "Technical assistance including prior-art search, patentability assessment, and filing advisory (no direct cash grant)",
+      "amount_inr": null,
+      "notes": "Advisory support provided by KSCST Patent Information Centre (PIC) without direct financial disbursement"
+    },
+    "documents_required": [
+      "Project technical summary and problem statement",
+      "Novelty and inventive step description",
+      "Student college identity card"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Contact KSCST Patent Information Centre (PIC) with technical summary",
+      "Participate in technical evaluation and prior-art search review with KSCST patent consultants",
+      "Receive advisory report on patentability and recommended drafting path"
+    ],
+    "source_url": "https://www.kscst.org.in",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  },
+  {
+    "id": "scheme-4-todo",
+    "name": "DST NIDHI-PRAYAS Student Prototype Grant",
+    "authority": "Department of Science & Technology (DST), Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [],
+      "college_types": [],
+      "states": [],
+      "project_stages": [],
+      "requires_iedc": null,
+      "other_conditions": []
+    },
+    "benefit": {
+      "description": "Prototype grant support up to Rs. 10 Lakhs for converting student technical ideas into physical POCs",
+      "amount_inr": 1000000,
+      "notes": "Non-dilutive grant-in-aid disbursed via DST-supported Technology Business Incubators (TBIs)"
+    },
+    "documents_required": [
+      "Prototype project proposal and technical roadmap",
+      "Student bonafide college identity card",
+      "Incubator / TBI endorsement letter"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Apply through nearest DST-recognized TBI or institutional incubator center",
+      "Pitch prototype viability to screening committee"
+    ],
+    "source_url": "https://dst.gov.in",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  },
+  {
+    "id": "scheme-5-todo",
+    "name": "SIPP: Scheme for Facilitating Start-Ups Intellectual Property Protection",
+    "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+    "type": "patent_fee_support",
+    "who_applies": "faculty",
+    "eligibility": {
+      "applicant_status": [],
+      "college_types": [],
+      "states": [],
+      "project_stages": [],
+      "requires_iedc": null,
+      "other_conditions": []
+    },
+    "benefit": {
+      "description": "80% statutory fee rebate on patent filing and free advisory support from registered patent facilitators",
+      "amount_inr": null,
+      "notes": "Applicable for student-faculty joint patents and recognized college innovation startups"
+    },
+    "documents_required": [
+      "Invention patent specification Form 1 & 2",
+      "Student/faculty declaration",
+      "Startup or MSME eligibility certificate"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Select a registered IP Facilitator from the official IP India panel",
+      "Facilitator drafts and submits the patent application on the official IP India portal"
+    ],
+    "source_url": "https://ipindia.gov.in",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  }
+]
