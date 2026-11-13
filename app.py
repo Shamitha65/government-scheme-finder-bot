@@ -298,23 +298,64 @@ st.markdown(
         }
     }
 
-    /* Completely hide the 'Press Enter to submit form' hint and container */
+    /* =========================================================================
+       COMPLETELY ELIMINATE 'Press Enter to submit form' HINT
+       ========================================================================= */
     [data-testid="InputInstructions"],
+    [data-testid="InputInstructions"] *,
     div[data-testid="InputInstructions"],
+    span[data-testid="InputInstructions"],
     small[data-testid="InputInstructions"],
-    div:has(> [data-testid="InputInstructions"]) {
+    .st-emotion-cache-1g88m28,
+    .st-emotion-cache-16idsys {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
         height: 0 !important;
         width: 0 !important;
+        max-height: 0 !important;
+        max-width: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
         margin: 0 !important;
         padding: 0 !important;
-        opacity: 0 !important;
+        overflow: hidden !important;
         pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
     }
     </style>
     """,
     unsafe_allow_html=True,
+)
+
+# Persistent DOM observer to clean input instructions from parent document
+import streamlit.components.v1 as components
+components.html(
+    """
+    <script>
+    function removeInstructions() {
+        try {
+            const doc = window.parent.document;
+            const els = doc.querySelectorAll('[data-testid="InputInstructions"], [data-baseweb="input"] span, [data-baseweb="input"] div');
+            els.forEach(el => {
+                if (el.textContent && (el.textContent.includes('Enter') || el.textContent.includes('submit form'))) {
+                    el.style.setProperty('display', 'none', 'important');
+                    el.style.setProperty('visibility', 'hidden', 'important');
+                    el.style.setProperty('font-size', '0px', 'important');
+                    el.style.setProperty('opacity', '0', 'important');
+                    el.style.setProperty('position', 'absolute', 'important');
+                    el.style.setProperty('left', '-9999px', 'important');
+                }
+            });
+        } catch(e) {}
+    }
+    setInterval(removeInstructions, 150);
+    removeInstructions();
+    </script>
+    """,
+    height=0,
+    width=0,
 )
 
 
