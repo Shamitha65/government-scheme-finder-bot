@@ -9,6 +9,7 @@ Clean 2-button gateway with a single unified Fund & Govt Scheme Chatbot:
 import json
 import os
 from pathlib import Path
+import re
 from typing import Any, Dict, List, Optional
 
 import streamlit as st
@@ -25,6 +26,8 @@ from engine import (
     ConfidenceLevel,
     run_engine,
     analyze_project_documentation,
+    extract_document_text,
+    parse_document_sections,
 )
 from extractor import (
     extract_scheme_from_text,
@@ -1322,49 +1325,19 @@ elif st.session_state.page == "fund":
             )
 
         st.markdown("### 📄 3. Project Documentation & Research Dossier")
-        st.caption("Detailed project documentation is evaluated to compute proposal readiness and novelty for screening committees.")
+        st.caption("Upload your project documentation or research dossier in Word (.docx, .doc) or PDF format using the single button below.")
 
-        with st.expander("📝 Enter Project Documentation (Abstract, Literature Survey, Methodology, Novelty, Citations)", expanded=True):
-            d_col1, d_col2 = st.columns(2)
-            with d_col1:
-                abstract = st.text_area(
-                    "1. Abstract & Executive Summary",
-                    value=u_f.get("abstract", ""),
-                    placeholder="Briefly state the real-world problem, proposed solution, and measurable expected impact...",
-                    height=95
-                )
-                literature_survey = st.text_area(
-                    "2. Literature Survey & Background",
-                    value=u_f.get("literature_survey", ""),
-                    placeholder="Summarize recent papers, prior art, and state-of-the-art benchmarks in this field...",
-                    height=95
-                )
-                technical_approach = st.text_area(
-                    "3. Technical Approach & Architecture",
-                    value=u_f.get("technical_approach", ""),
-                    placeholder="Describe system workflow, algorithms (e.g. CNN, YOLO), hardware components, and methodology...",
-                    height=95
-                )
+        uploaded_doc = st.file_uploader(
+            "Upload Project Documentation (Word .docx, .doc or PDF)",
+            type=["pdf", "docx", "doc"],
+            help="Upload your project proposal, synopsis, thesis draft, or research report in Word or PDF format."
+        )
 
-            with d_col2:
-                innovation_novelty = st.text_area(
-                    "4. Innovation & Novelty (New Research Done in Existing Project)",
-                    value=u_f.get("innovation_novelty", ""),
-                    placeholder="Highlight the new research contributions, unique algorithms, or structural advancements done...",
-                    height=95
-                )
-                existing_solutions = st.text_area(
-                    "5. Existing Solutions & Limitations Addressed",
-                    value=u_f.get("existing_solutions", ""),
-                    placeholder="Explain current commercial products or baseline papers and their specific bottlenecks (accuracy, cost, latency)...",
-                    height=95
-                )
-                research_papers = st.text_area(
-                    "6. Research Papers Referred & Used (Key Citations)",
-                    value=u_f.get("research_papers", ""),
-                    placeholder="e.g. 1. Author et al., 'Plant Disease Diagnosis using Deep CNN', IEEE Access, 2024...",
-                    height=95
-                )
+        cached_doc = st.session_state.get("uploaded_doc_cache")
+        if uploaded_doc is not None:
+            st.success(f"📎 **Document Ready:** `{uploaded_doc.name}` ({len(uploaded_doc.getvalue()) / 1024:.1f} KB)")
+        elif cached_doc and cached_doc.get("name"):
+            st.info(f"📎 **Previously Uploaded Document:** `{cached_doc['name']}` ({cached_doc.get('size_kb', 0):.1f} KB)")
 
         btn_search_f = st.form_submit_button("🔍 Find Matching Organizations & Grant Pathways", type="primary", use_container_width=True)
 
@@ -1388,6 +1361,30 @@ elif st.session_state.page == "fund":
         elif has_iedc.startswith("--"):
             st.error("Please select IEDC / Incubation status.")
         else:
+            doc_name = ""
+            doc_size_kb = 0.0
+            doc_text = ""
+            parsed_sections = {}
+
+            if uploaded_doc is not None:
+                doc_bytes = uploaded_doc.getvalue()
+                doc_name = uploaded_doc.name
+                doc_size_kb = len(doc_bytes) / 1024.0
+                doc_text = extract_document_text(doc_bytes, doc_name)
+                parsed_sections = parse_document_sections(doc_text)
+                st.session_state.uploaded_doc_cache = {
+                    "name": doc_name,
+                    "size_kb": doc_size_kb,
+                    "text": doc_text,
+                    "sections": parsed_sections,
+                }
+            elif st.session_state.get("uploaded_doc_cache"):
+                cached = st.session_state.get("uploaded_doc_cache")
+                doc_name = cached.get("name", "")
+                doc_size_kb = cached.get("size_kb", 0.0)
+                doc_text = cached.get("text", "")
+                parsed_sections = cached.get("sections", {})
+
             profile_obj = StudentProfile(
                 student_status=student_status,
                 college_type=college_type,
@@ -1400,12 +1397,15 @@ elif st.session_state.page == "fund":
                 college_name=college_name.strip(),
                 selected_sdgs=selected_sdgs,
                 funding_amount_required=float(funding_amount_required),
-                abstract=abstract.strip(),
-                literature_survey=literature_survey.strip(),
-                technical_approach=technical_approach.strip(),
-                innovation_novelty=innovation_novelty.strip(),
-                existing_solutions=existing_solutions.strip(),
-                research_papers=research_papers.strip(),
+                abstract=parsed_sections.get("abstract", "").strip(),
+                literature_survey=parsed_sections.get("literature_survey", "").strip(),
+                technical_approach=parsed_sections.get("technical_approach", "").strip(),
+                innovation_novelty=parsed_sections.get("innovation_novelty", "").strip(),
+                existing_solutions=parsed_sections.get("existing_solutions", "").strip(),
+                research_papers=parsed_sections.get("research_papers", "").strip(),
+                uploaded_document_name=doc_name,
+                uploaded_document_text=doc_text,
+                uploaded_document_size_kb=doc_size_kb,
             )
             st.session_state.fund_data = {
                 "student_status": student_status,
@@ -1419,12 +1419,8 @@ elif st.session_state.page == "fund":
                 "college_name": college_name.strip(),
                 "selected_sdgs": selected_sdgs,
                 "funding_amount_required": float(funding_amount_required),
-                "abstract": abstract.strip(),
-                "literature_survey": literature_survey.strip(),
-                "technical_approach": technical_approach.strip(),
-                "innovation_novelty": innovation_novelty.strip(),
-                "existing_solutions": existing_solutions.strip(),
-                "research_papers": research_papers.strip(),
+                "uploaded_document_name": doc_name,
+                "uploaded_document_size_kb": doc_size_kb,
             }
             st.session_state.fund_profile_obj = profile_obj
             st.session_state.fund_submitted = True
@@ -1441,18 +1437,26 @@ elif st.session_state.page == "fund":
             st.error("🚨 **Novelty Compromised:** Public disclosure destroys patent novelty under Section 29–34 of Indian Patents Act 1970.")
 
         # Documentation Readiness Evaluation Card
+        doc_info_badge = ""
+        if prof.uploaded_document_name:
+            doc_info_badge = f"""
+                <div style="font-size:0.85rem; color:#1e293b; background:#f8fafc; border:1px solid #e2e8f0; padding:0.4rem 0.75rem; border-radius:6px; margin-top:0.5rem;">
+                    📄 <strong>Attached Documentation:</strong> <code>{prof.uploaded_document_name}</code> ({prof.uploaded_document_size_kb:.1f} KB)
+                </div>
+            """
         st.markdown(
             f"""
             <div class="doc-score-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
                     <div>
                         <h4 style="margin:0 0 0.2rem 0; color:#0f172a; font-weight:700;">📊 Research Dossier & Grant Proposal Readiness</h4>
-                        <span style="font-size:0.85rem; color:#475569;">Evaluated from abstract, literature survey, technical approach, innovation novelty & citations</span>
+                        <span style="font-size:0.85rem; color:#475569;">Evaluated from uploaded project document (abstract, methodology, novelty, citations)</span>
                     </div>
                     <span style="font-size:1.1rem; font-weight:800; color:{doc_eval['badge_color']}; background:#ffffff; padding:0.35rem 0.85rem; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
                         {doc_eval['score']}% — {doc_eval['verdict']}
                     </span>
                 </div>
+                {doc_info_badge}
             </div>
             """,
             unsafe_allow_html=True
@@ -1603,8 +1607,10 @@ elif st.session_state.page == "fund":
         md_text += f"**Domain:** {prof.project_domain}\n"
         md_text += f"**Mapped SDGs:** {', '.join(prof.selected_sdgs)}\n"
         md_text += f"**College:** {prof.college_name} ({prof.student_status}, {prof.state})\n"
-        md_text += f"**Requested Budget:** ₹{prof.funding_amount_required:,.0f}\n\n"
-        md_text += f"## Proposal Documentation Readiness Score: {doc_eval['score']}% ({doc_eval['verdict']})\n\n"
+        md_text += f"**Requested Budget:** ₹{prof.funding_amount_required:,.0f}\n"
+        if prof.uploaded_document_name:
+            md_text += f"**Attached Documentation:** {prof.uploaded_document_name} ({prof.uploaded_document_size_kb:.1f} KB)\n"
+        md_text += f"\n## Proposal Documentation Readiness Score: {doc_eval['score']}% ({doc_eval['verdict']})\n\n"
         md_text += f"## Directly Eligible Organizations ({len(report.eligible_schemes)} matched):\n"
         for ev in report.eligible_schemes:
             md_text += f"- **{ev.scheme.name}** ({ev.scheme.authority}): {ev.scheme.benefit.description} [Portal]({ev.scheme.source_url})\n"
@@ -1614,7 +1620,7 @@ elif st.session_state.page == "fund":
         md_text += f"\n## Recommended Sequential Action Steps:\n"
         for item in report.action_checklist:
             md_text += f"### Step {item.step_number}: {item.title}\n{item.description}\n\n"
-        clean_title = prof.project_title[:20].replace(' ', '_') if prof.project_title else "Project"
+        clean_title = re.sub(r'[^a-zA-Z0-9_-]', '_', prof.project_title[:25]) if prof.project_title else "Project"
         st.download_button("📥 Download Action Plan (.md)", data=md_text, file_name=f"Action_Plan_{clean_title}.md")
 
     st.markdown("---")

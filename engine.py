@@ -5,6 +5,7 @@ government and organization patent-filing, grant, and funding schemes.
 """
 
 from enum import Enum
+import io
 import re
 from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, Field
@@ -93,6 +94,9 @@ class StudentProfile(BaseModel):
     innovation_novelty: str = ""
     existing_solutions: str = ""
     research_papers: str = ""
+    uploaded_document_name: str = ""
+    uploaded_document_text: str = ""
+    uploaded_document_size_kb: float = 0.0
 
 
 class SchemeEvaluation(BaseModel):
@@ -122,108 +126,307 @@ class EvaluationReport(BaseModel):
     action_checklist: List[ActionItem]
 
 
+def extract_document_text(file_bytes: bytes, filename: str) -> str:
+    """
+    Extracts plain text content from uploaded PDF or Word (.docx, .doc) files.
+    """
+    if not file_bytes:
+        return ""
+
+    fname = filename.lower()
+
+    # 1. PDF Documents
+    if fname.endswith(".pdf"):
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(io.BytesIO(file_bytes))
+            pages = []
+            for page in reader.pages:
+                txt = page.extract_text()
+                if txt:
+                    pages.append(txt)
+            if pages:
+                return "\n\n".join(pages).strip()
+        except Exception:
+            pass
+
+    # 2. Word .docx or .doc Documents
+    if fname.endswith((".docx", ".doc")):
+        # Method A: python-docx
+        try:
+            import docx
+            doc = docx.Document(io.BytesIO(file_bytes))
+            lines = []
+            for p in doc.paragraphs:
+                if p.text.strip():
+                    lines.append(p.text.strip())
+            for tbl in doc.tables:
+                for row in tbl.rows:
+                    row_txt = " | ".join(c.text.strip() for c in row.cells if c.text.strip())
+                    if row_txt:
+                        lines.append(row_txt)
+            if lines:
+                return "\n\n".join(lines).strip()
+        except Exception:
+            pass
+
+        # Method B: Pure Python zipfile + XML fallback for docx
+        try:
+            import zipfile
+            import xml.etree.ElementTree as ET
+            with zipfile.ZipFile(io.BytesIO(file_bytes)) as z:
+                xml_content = z.read("word/document.xml")
+            tree = ET.fromstring(xml_content)
+            texts = [node.text for node in tree.iter() if node.tag.endswith('}t') and node.text]
+            if texts:
+                return " ".join(texts).strip()
+        except Exception:
+            pass
+
+        # Method C: Binary string regex fallback for legacy .doc
+        try:
+            chunks = re.findall(rb'[\x20-\x7E\r\n\t]{4,}', file_bytes)
+            decoded = [c.decode('latin1', errors='ignore') for c in chunks]
+            if decoded:
+                return "\n".join(decoded).strip()
+        except Exception:
+            pass
+
+    # Generic text fallback
+    try:
+        return file_bytes.decode("utf-8", errors="ignore").strip()
+    except Exception:
+        return ""
+
+
+def parse_document_sections(text: str) -> Dict[str, str]:
+    """
+    Scans document text for common academic research sections:
+    Abstract, Literature Survey, Technical Approach, Innovation/Novelty, Existing Solutions, Citations.
+    """
+    sections = {
+        "abstract": "",
+        "literature_survey": "",
+        "technical_approach": "",
+        "innovation_novelty": "",
+        "existing_solutions": "",
+        "research_papers": "",
+    }
+    if not text:
+        return sections
+
+    heading_patterns = [
+        ("abstract", r"(?i)\b(?:abstract|executive\s+summary)\b[:\s\n\-]*"),
+        ("literature_survey", r"(?i)\b(?:literature\s+survey|literature\s+review|background|prior\s+art|related\s+work)\b[:\s\n\-]*"),
+        ("technical_approach", r"(?i)\b(?:technical\s+approach|methodology|system\s+architecture|proposed\s+system|implementation|workflow|methods|architecture)\b[:\s\n\-]*"),
+        ("innovation_novelty", r"(?i)\b(?:innovation|novelty|new\s+research|inventive\s+step|contributions?|unique\s+aspects?)\b[:\s\n\-]*"),
+        ("existing_solutions", r"(?i)\b(?:existing\s+solutions?|limitations\s+addressed|current\s+systems?|comparative\s+analysis|gap\s+analysis)\b[:\s\n\-]*"),
+        ("research_papers", r"(?i)\b(?:references|citations|bibliography|research\s+papers\s+referred|papers\s+cited)\b[:\s\n\-]*"),
+    ]
+
+    found_spans = []
+    for key, pat in heading_patterns:
+        m = re.search(pat, text)
+        if m:
+            found_spans.append((m.start(), m.end(), key))
+
+    if found_spans:
+        found_spans.sort(key=lambda x: x[0])
+        for i, (start, end, key) in enumerate(found_spans):
+            next_start = found_spans[i + 1][0] if i + 1 < len(found_spans) else len(text)
+            section_body = text[end:next_start].strip()
+            sections[key] = section_body
+    else:
+        paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+        if len(paragraphs) >= 1:
+            sections["abstract"] = paragraphs[0]
+        if len(paragraphs) >= 2:
+            sections["technical_approach"] = "\n\n".join(paragraphs[1:min(5, len(paragraphs))])
+        if len(paragraphs) >= 3:
+            sections["innovation_novelty"] = paragraphs[min(2, len(paragraphs)-1)]
+
+    return sections
+
+
 def analyze_project_documentation(profile: StudentProfile) -> Dict[str, Any]:
     """
     Evaluates project documentation dossier and calculates readiness score (0-100%)
     for submission to grant screening committees.
+    Supports uploaded Word (.docx, .doc) or PDF documents as well as direct text inputs.
     """
     scores: Dict[str, int] = {}
     strengths: List[str] = []
     recommendations: List[str] = []
 
-    # 1. Abstract
-    abs_len = len(profile.abstract.strip().split()) if profile.abstract else 0
-    if abs_len >= 40:
-        scores["abstract"] = 20
-        strengths.append("Comprehensive abstract summarizing problem, method, and impact.")
-    elif abs_len >= 15:
-        scores["abstract"] = 12
-        recommendations.append("Expand abstract to at least 40-50 words detailing expected societal or scientific outcome.")
-    elif abs_len > 0:
-        scores["abstract"] = 5
-        recommendations.append("Provide a clear 2-3 paragraph abstract highlighting the problem and expected results.")
-    else:
-        scores["abstract"] = 0
-        recommendations.append("Add an executive summary / abstract to communicate the project value proposition.")
+    # If an uploaded document is present
+    if profile.uploaded_document_text:
+        doc_text = profile.uploaded_document_text
+        doc_words = len(doc_text.strip().split())
+        doc_lower = doc_text.lower()
 
-    # 2. Literature Survey
-    lit_len = len(profile.literature_survey.strip().split()) if profile.literature_survey else 0
-    if lit_len >= 30:
-        scores["literature_survey"] = 15
-        strengths.append("Structured literature survey establishing state-of-the-art context.")
-    elif lit_len >= 10:
-        scores["literature_survey"] = 8
-        recommendations.append("Include comparison against recent existing models or benchmarks in literature survey.")
-    elif lit_len > 0:
-        scores["literature_survey"] = 3
-        recommendations.append("Document at least 2-3 prior methods or existing published approaches.")
-    else:
-        scores["literature_survey"] = 0
-        recommendations.append("Add a literature survey section to demonstrate knowledge of prior work.")
+        strengths.append(
+            f"Uploaded Document: '{profile.uploaded_document_name}' ({profile.uploaded_document_size_kb:.1f} KB, ~{doc_words} words extracted)."
+        )
 
-    # 3. Technical Approach
-    tech_len = len(profile.technical_approach.strip().split()) if profile.technical_approach else 0
-    if tech_len >= 40:
-        scores["technical_approach"] = 20
-        strengths.append("Thorough technical methodology covering architecture, data, and execution steps.")
-    elif tech_len >= 15:
-        scores["technical_approach"] = 12
-        recommendations.append("Specify technical architecture diagrams, algorithms, or hardware components.")
-    elif tech_len > 0:
-        scores["technical_approach"] = 5
-        recommendations.append("Detail the step-by-step engineering methodology or algorithm pipeline.")
-    else:
-        scores["technical_approach"] = 0
-        recommendations.append("Add technical approach details outlining system pipeline and workflow.")
+        # 1. Abstract
+        has_abs_kw = any(w in doc_lower for w in ["abstract", "executive summary", "problem statement", "objective", "in this project"])
+        abs_words = len(profile.abstract.split()) if profile.abstract else (40 if has_abs_kw and doc_words > 100 else 0)
+        if abs_words >= 35 or (has_abs_kw and doc_words >= 150):
+            scores["abstract"] = 20
+            strengths.append("Clear abstract summarizing the problem, solution, and intended impact.")
+        elif abs_words >= 15 or has_abs_kw:
+            scores["abstract"] = 14
+            recommendations.append("Ensure the abstract clearly highlights measurable quantitative impact.")
+        else:
+            scores["abstract"] = 8
+            recommendations.append("Include an executive summary / abstract at the start of the documentation.")
 
-    # 4. Innovation & Novelty
-    nov_len = len(profile.innovation_novelty.strip().split()) if profile.innovation_novelty else 0
-    if nov_len >= 30:
-        scores["novelty"] = 20
-        strengths.append("Clear articulation of inventive step and novelty over baseline systems.")
-    elif nov_len >= 10:
-        scores["novelty"] = 12
-        recommendations.append("Emphasize the unique inventive contribution (what new research was done in this project).")
-    elif nov_len > 0:
-        scores["novelty"] = 5
-        recommendations.append("Explicitly state what new research or improvement is introduced over existing solutions.")
-    else:
-        scores["novelty"] = 0
-        recommendations.append("Highlight innovation & new research elements to satisfy patent/grant novelty committees.")
+        # 2. Literature Survey & Background
+        has_lit_kw = any(w in doc_lower for w in ["literature", "survey", "prior art", "related work", "background", "state of the art", "previous work"])
+        if has_lit_kw or (profile.literature_survey and len(profile.literature_survey.split()) >= 20):
+            scores["literature_survey"] = 15
+            strengths.append("Literature survey and prior art review identified in the document.")
+        elif doc_words >= 200:
+            scores["literature_survey"] = 10
+            recommendations.append("Highlight specific existing baseline models or literature benchmarks.")
+        else:
+            scores["literature_survey"] = 5
+            recommendations.append("Include a dedicated literature survey section detailing prior work.")
 
-    # 5. Existing Solutions & Limitations
-    sol_len = len(profile.existing_solutions.strip().split()) if profile.existing_solutions else 0
-    if sol_len >= 20:
-        scores["existing_solutions"] = 15
-        strengths.append("Critical analysis of existing solutions and unsolved gaps.")
-    elif sol_len >= 8:
-        scores["existing_solutions"] = 8
-        recommendations.append("Highlight specific limitations of current products (e.g. high cost, low accuracy, slow latency).")
-    elif sol_len > 0:
-        scores["existing_solutions"] = 3
-        recommendations.append("List 1-2 existing market or research solutions and why your approach outperforms them.")
-    else:
-        scores["existing_solutions"] = 0
-        recommendations.append("Analyze existing solutions and their specific bottlenecks.")
+        # 3. Technical Approach & Architecture
+        has_tech_kw = any(w in doc_lower for w in ["methodology", "architecture", "algorithm", "implementation", "pipeline", "framework", "model", "dataset", "hardware", "software", "cnn", "neural", "system design"])
+        if has_tech_kw or (profile.technical_approach and len(profile.technical_approach.split()) >= 30):
+            scores["technical_approach"] = 20
+            strengths.append("Technical methodology, architecture, and system pipeline documented.")
+        elif doc_words >= 150:
+            scores["technical_approach"] = 12
+            recommendations.append("Detail the step-by-step technical methodology and algorithm flow.")
+        else:
+            scores["technical_approach"] = 5
+            recommendations.append("Add detailed technical architecture and system specifications.")
 
-    # 6. Research Papers & Citations
-    papers_len = len(profile.research_papers.strip()) if profile.research_papers else 0
-    if papers_len >= 20:
-        scores["citations"] = 10
-        strengths.append("Academic citations and research papers documented.")
-    elif papers_len >= 5:
-        scores["citations"] = 5
-        recommendations.append("Format research papers with Authors, Title, Journal/Conference, and Year.")
-    elif papers_len > 0:
-        scores["citations"] = 2
-        recommendations.append("Include 2-3 key research papers or standard datasets referred to in your research.")
+        # 4. Innovation & Novelty
+        has_nov_kw = any(w in doc_lower for w in ["novelty", "novel", "innovation", "innovative", "new research", "contribution", "unique", "inventive step", "proposed", "advancement"])
+        if has_nov_kw or (profile.innovation_novelty and len(profile.innovation_novelty.split()) >= 20):
+            scores["novelty"] = 20
+            strengths.append("Inventive step and novelty contributions articulated.")
+        elif doc_words >= 150:
+            scores["novelty"] = 12
+            recommendations.append("Explicitly state what new research or improvement is introduced over existing solutions.")
+        else:
+            scores["novelty"] = 5
+            recommendations.append("Articulate the unique novelty aspect to satisfy screening committees.")
+
+        # 5. Existing Solutions & Limitations
+        has_gap_kw = any(w in doc_lower for w in ["existing", "limitations", "challenges", "bottlenecks", "comparison", "drawbacks", "gap", "shortcoming"])
+        if has_gap_kw or (profile.existing_solutions and len(profile.existing_solutions.split()) >= 15):
+            scores["existing_solutions"] = 15
+            strengths.append("Analysis of existing solutions and limitations addressed.")
+        elif doc_words >= 150:
+            scores["existing_solutions"] = 10
+            recommendations.append("Mention current commercial alternatives and their specific limitations.")
+        else:
+            scores["existing_solutions"] = 5
+            recommendations.append("Document existing market solutions and why your project outperforms them.")
+
+        # 6. Research Papers & Citations
+        has_ref_kw = any(w in doc_lower for w in ["references", "citations", "bibliography", "ieee", "arxiv", "journal", "conference", "et al", "[1]", "[2]"])
+        if has_ref_kw or (profile.research_papers and len(profile.research_papers) >= 15):
+            scores["citations"] = 10
+            strengths.append("Academic citations and research references documented.")
+        elif doc_words >= 200:
+            scores["citations"] = 6
+            recommendations.append("Format references in standard IEEE or APA format.")
+        else:
+            scores["citations"] = 2
+            recommendations.append("Add 2-3 key citations of papers or standard datasets referred to in your research.")
+
     else:
-        scores["citations"] = 0
-        recommendations.append("Add research papers and academic references consulted.")
+        # Fallback to direct field evaluation (for programmatic or test calls)
+        abs_len = len(profile.abstract.strip().split()) if profile.abstract else 0
+        if abs_len >= 40:
+            scores["abstract"] = 20
+            strengths.append("Comprehensive abstract summarizing problem, method, and impact.")
+        elif abs_len >= 15:
+            scores["abstract"] = 12
+            recommendations.append("Expand abstract to at least 40-50 words detailing expected societal or scientific outcome.")
+        elif abs_len > 0:
+            scores["abstract"] = 5
+            recommendations.append("Provide a clear 2-3 paragraph abstract highlighting the problem and expected results.")
+        else:
+            scores["abstract"] = 0
+            recommendations.append("Upload your project documentation (Word or PDF) to evaluate proposal readiness.")
+
+        lit_len = len(profile.literature_survey.strip().split()) if profile.literature_survey else 0
+        if lit_len >= 30:
+            scores["literature_survey"] = 15
+            strengths.append("Structured literature survey establishing state-of-the-art context.")
+        elif lit_len >= 10:
+            scores["literature_survey"] = 8
+            recommendations.append("Include comparison against recent existing models or benchmarks in literature survey.")
+        elif lit_len > 0:
+            scores["literature_survey"] = 3
+            recommendations.append("Document at least 2-3 prior methods or existing published approaches.")
+        else:
+            scores["literature_survey"] = 0
+
+        tech_len = len(profile.technical_approach.strip().split()) if profile.technical_approach else 0
+        if tech_len >= 40:
+            scores["technical_approach"] = 20
+            strengths.append("Thorough technical methodology covering architecture, data, and execution steps.")
+        elif tech_len >= 15:
+            scores["technical_approach"] = 12
+            recommendations.append("Specify technical architecture diagrams, algorithms, or hardware components.")
+        elif tech_len > 0:
+            scores["technical_approach"] = 5
+            recommendations.append("Detail the step-by-step engineering methodology or algorithm pipeline.")
+        else:
+            scores["technical_approach"] = 0
+
+        nov_len = len(profile.innovation_novelty.strip().split()) if profile.innovation_novelty else 0
+        if nov_len >= 30:
+            scores["novelty"] = 20
+            strengths.append("Clear articulation of inventive step and novelty over baseline systems.")
+        elif nov_len >= 10:
+            scores["novelty"] = 12
+            recommendations.append("Emphasize the unique inventive contribution (what new research was done in this project).")
+        elif nov_len > 0:
+            scores["novelty"] = 5
+            recommendations.append("Explicitly state what new research or improvement is introduced over existing solutions.")
+        else:
+            scores["novelty"] = 0
+
+        sol_len = len(profile.existing_solutions.strip().split()) if profile.existing_solutions else 0
+        if sol_len >= 20:
+            scores["existing_solutions"] = 15
+            strengths.append("Critical analysis of existing solutions and unsolved gaps.")
+        elif sol_len >= 8:
+            scores["existing_solutions"] = 8
+            recommendations.append("Highlight specific limitations of current products.")
+        elif sol_len > 0:
+            scores["existing_solutions"] = 3
+        else:
+            scores["existing_solutions"] = 0
+
+        papers_len = len(profile.research_papers.strip()) if profile.research_papers else 0
+        if papers_len >= 20:
+            scores["citations"] = 10
+            strengths.append("Academic citations and research papers documented.")
+        elif papers_len >= 5:
+            scores["citations"] = 5
+            recommendations.append("Format research papers with Authors, Title, Journal/Conference, and Year.")
+        elif papers_len > 0:
+            scores["citations"] = 2
+        else:
+            scores["citations"] = 0
 
     total_score = min(100, sum(scores.values()))
 
-    if total_score >= 80:
+    if not profile.uploaded_document_text and total_score == 0:
+        verdict = "No Document Uploaded"
+        badge_color = "#94a3b8"
+        recommendations = ["Please upload your project documentation (Word .docx or PDF) using the single upload button to evaluate proposal readiness."]
+    elif total_score >= 80:
         verdict = "Excellent — Ready for Grant Screening Committee"
         badge_color = "#10b981"
     elif total_score >= 50:
@@ -326,7 +529,7 @@ def evaluate_scheme(profile: StudentProfile, scheme: Scheme) -> SchemeEvaluation
         )
 
     # 9. Domain & Theme Rules Check (CRITICAL)
-    full_text = f"{profile.project_title} {profile.project_domain} {profile.technical_approach} {profile.innovation_novelty} {profile.abstract}".lower()
+    full_text = f"{profile.project_title} {profile.project_domain} {profile.technical_approach} {profile.innovation_novelty} {profile.abstract} {profile.uploaded_document_text}".lower()
 
     if scheme.eligibility.open_theme or not scheme.eligibility.domains or "*" in scheme.eligibility.domains or "General / Open Theme" in scheme.eligibility.domains:
         domain_match_type = "open_theme"

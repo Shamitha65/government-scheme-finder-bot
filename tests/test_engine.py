@@ -16,6 +16,9 @@ from engine import (
     evaluate_scheme,
     run_engine,
     generate_action_checklist,
+    extract_document_text,
+    parse_document_sections,
+    analyze_project_documentation,
 )
 
 
@@ -193,3 +196,74 @@ def test_areca_nut_leaf_disease_organization_matching(sample_schemes):
     # 5. FinTech strictly disqualified
     assert "rbih-swanidhi-fintech-grant" in disqualified_ids
     assert "ifsca-gift-city-fintech-grant" in disqualified_ids
+
+
+def test_docx_and_pdf_text_extraction():
+    """Test 11: Text extraction from in-memory Word and PDF byte streams."""
+    import io
+
+    # Test DOCX
+    import docx
+    d = docx.Document()
+    d.add_heading("Automated Detection of Areca Nut Foliar Blight", level=1)
+    d.add_paragraph("Abstract: Early stage identification using transfer learning on field cameras.")
+    d.add_paragraph("Methodology: Deep CNN MobileNetV3 trained with focal loss.")
+    docx_buf = io.BytesIO()
+    d.save(docx_buf)
+    docx_bytes = docx_buf.getvalue()
+
+    extracted_docx = extract_document_text(docx_bytes, "areca_study.docx")
+    assert "Automated Detection" in extracted_docx
+    assert "MobileNetV3" in extracted_docx
+
+    # Test PDF
+    from pypdf import PdfWriter
+    w = PdfWriter()
+    w.add_blank_page(width=72, height=72)
+    pdf_buf = io.BytesIO()
+    w.write(pdf_buf)
+    pdf_bytes = pdf_buf.getvalue()
+    extracted_pdf = extract_document_text(pdf_bytes, "project_doc.pdf")
+    assert isinstance(extracted_pdf, str)
+
+
+def test_uploaded_document_evaluates_readiness():
+    """Test 12: Uploaded document text triggers comprehensive dossier scoring and section parsing."""
+    doc_sample = (
+        "Project Report: Solar-Powered IoT Irrigation and Crop Disease Monitoring System\n\n"
+        "Abstract: This research addresses water scarcity and crop pests by proposing an autonomous edge AI node. "
+        "The system achieved 94.2% accuracy in real-time pest diagnosis while reducing water usage by 38% across test farms.\n\n"
+        "Literature Survey: Prior art in precision agriculture relies heavily on cloud-connected sensors which fail in low-bandwidth rural setups. "
+        "Recent benchmarks from IEEE Transactions on Agri-Informatics show latency exceeding 12 seconds.\n\n"
+        "Technical Approach: We designed a custom PCB housing an ESP32 microcontroller interfaced with multispectral cameras, soil moisture probes, "
+        "and a lightweight quantized CNN deployed on an onboard neural accelerator.\n\n"
+        "Innovation and Novelty: Unlike conventional cloud telemetry, our system operates 100% offline with zero cloud dependency. "
+        "The novel dual-spectrum filtering algorithm separates specular glare from leaf lesions.\n\n"
+        "Existing Solutions: Existing commercial drip timers lack adaptive vision feedback, leading to over-watering and fungal spread.\n\n"
+        "References and Citations:\n"
+        "1. K. Rao et al., 'Edge AI in Smart Agriculture', IEEE IoT Journal, 2023.\n"
+        "2. S. Patel, 'Low-Power Vision Sensors for Crop Protection', AgriTech Conf, 2024."
+    )
+
+    sections = parse_document_sections(doc_sample)
+    assert len(sections["abstract"]) > 0
+    assert len(sections["technical_approach"]) > 0
+    assert len(sections["innovation_novelty"]) > 0
+
+    profile = StudentProfile(
+        student_status="UG",
+        college_type="autonomous",
+        state="Karnataka",
+        project_title="Solar IoT Irrigation",
+        project_domain="Agriculture, Plant & Animal Sciences / Crop Protection",
+        project_stage="prototype",
+        has_iedc="yes",
+        uploaded_document_name="Solar_IoT_Project.docx",
+        uploaded_document_text=doc_sample,
+        uploaded_document_size_kb=45.2,
+    )
+
+    eval_result = analyze_project_documentation(profile)
+    assert eval_result["score"] >= 80
+    assert "Ready for Grant Screening" in eval_result["verdict"]
+    assert any("Solar_IoT_Project.docx" in s for s in eval_result["strengths"])
