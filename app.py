@@ -153,6 +153,150 @@ st.markdown(
     .who-iedc { background: #fef3c7; color: #92400e; }
     .who-institute { background: #f3e8ff; color: #6b21a8; }
     .who-faculty { background: #ffedd5; color: #9a3412; }
+
+    /* =========================================================================
+       MOBILE & PHONE VIEW OPTIMIZATIONS (Screen width <= 768px and <= 480px)
+       ========================================================================= */
+    @media (max-width: 768px) {
+        /* Mobile-optimized main content container */
+        .main .block-container {
+            padding-left: 0.85rem !important;
+            padding-right: 0.85rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 2rem !important;
+            max-width: 100% !important;
+        }
+
+        /* Mobile Hero Banner */
+        .portal-hero {
+            padding: 1.35rem 1.1rem !important;
+            border-radius: 12px !important;
+            margin-bottom: 1.2rem !important;
+        }
+        .portal-hero h1 {
+            font-size: 1.4rem !important;
+            line-height: 1.25 !important;
+        }
+        .portal-hero p {
+            font-size: 0.86rem !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Mobile Gateway Cards */
+        .gateway-card {
+            padding: 1.15rem 1rem !important;
+            border-radius: 14px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .gateway-card h3 {
+            font-size: 1.2rem !important;
+        }
+
+        /* Mobile Scheme Cards */
+        .scheme-card {
+            padding: 1rem !important;
+            border-radius: 12px !important;
+            margin-bottom: 0.75rem !important;
+        }
+        .scheme-card h3 {
+            font-size: 1.1rem !important;
+            line-height: 1.35 !important;
+        }
+
+        /* Mobile Highlight & Reason Boxes */
+        .benefit-box, .why-box {
+            padding: 0.7rem 0.8rem !important;
+            font-size: 0.86rem !important;
+            margin: 0.5rem 0 !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Responsive Badges */
+        .pill-badge {
+            font-size: 0.72rem !important;
+            padding: 0.2rem 0.5rem !important;
+            margin-bottom: 0.3rem !important;
+            display: inline-block !important;
+        }
+        .doc-tag {
+            font-size: 0.72rem !important;
+            padding: 0.18rem 0.45rem !important;
+            margin-bottom: 0.25rem !important;
+            display: inline-block !important;
+        }
+
+        /* Auto-stack 3-column form inputs into single-column on phones */
+        [data-testid="stForm"] div[data-testid="column"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        /* Touch-Friendly Action Buttons (min 44px height for thumbs) */
+        .stButton > button, .stLinkButton > a {
+            min-height: 44px !important;
+            font-size: 0.88rem !important;
+            padding: 0.55rem 0.8rem !important;
+            border-radius: 8px !important;
+            touch-action: manipulation;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+        }
+
+        /* Chatbot optimization on phone view */
+        .stChatMessage {
+            padding: 0.7rem 0.8rem !important;
+            font-size: 0.88rem !important;
+            border-radius: 10px !important;
+        }
+        .stChatInput {
+            padding-bottom: 0.5rem !important;
+        }
+    }
+
+    @media (max-width: 600px) {
+        /* Full-width stacking for side-by-side action buttons on small mobile screens */
+        div[data-testid="column"]:has(button[key^="ask_w_"]),
+        div[data-testid="column"]:has(button[key^="ask_fund_"]),
+        div[data-testid="column"]:has(a[href^="http"]) {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            margin-bottom: 0.35rem !important;
+        }
+
+        /* Full-width suggested questions on phone view */
+        div[data-testid="column"]:has(button[key^="gq_"]),
+        div[data-testid="column"]:has(button[key^="fq_"]) {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+            margin-bottom: 0.25rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .portal-hero h1 {
+            font-size: 1.25rem !important;
+        }
+        .portal-hero p {
+            font-size: 0.82rem !important;
+        }
+        .gateway-card {
+            padding: 1rem !important;
+        }
+        .scheme-card {
+            padding: 0.85rem !important;
+        }
+        .pill-badge {
+            font-size: 0.68rem !important;
+            padding: 0.15rem 0.45rem !important;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -743,7 +887,7 @@ if st.session_state.page == "home":
 # 2. GOVT SCHEME SCREEN
 # ==============================================================================
 elif st.session_state.page == "govt_scheme":
-    nav_col1, nav_col2 = st.columns([5, 1])
+    nav_col1, nav_col2 = st.columns([3, 1])
     with nav_col1:
         st.markdown("## 🏛️ Government Schemes")
     with nav_col2:
@@ -879,7 +1023,7 @@ elif st.session_state.page == "govt_scheme":
 # 3. FUND SCREEN
 # ==============================================================================
 elif st.session_state.page == "fund":
-    nav_col1, nav_col2 = st.columns([5, 1])
+    nav_col1, nav_col2 = st.columns([3, 1])
     with nav_col1:
         st.markdown("## 🚀 Fund & Patent Support")
     with nav_col2:
