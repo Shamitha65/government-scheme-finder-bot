@@ -10,7 +10,35 @@ import json
 import os
 from pathlib import Path
 import re
+import sys
 from typing import Any, Dict, List, Optional
+
+# Universal deployment shim for Render / Cloud hosts:
+# If launched via python app.py or Gunicorn, launch Streamlit server directly on $PORT
+try:
+    from streamlit.runtime import exists as _st_runtime_exists
+    if not _st_runtime_exists() and "pytest" not in sys.modules and not os.environ.get("PYTEST_CURRENT_TEST"):
+        _port = os.environ.get("PORT", "8501")
+        _cmd = [
+            sys.executable,
+            "-m",
+            "streamlit",
+            "run",
+            __file__,
+            f"--server.port={_port}",
+            "--server.address=0.0.0.0",
+            "--server.enableCORS=false",
+            "--server.enableXsrfProtection=false",
+            "--server.headless=true",
+        ]
+        os.execvp(sys.executable, _cmd)
+except Exception:
+    pass
+
+# WSGI fallback stub if introspected by Gunicorn
+def app(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    return [b"Streamlit Application Loading..."]
 
 import streamlit as st
 from dotenv import load_dotenv
