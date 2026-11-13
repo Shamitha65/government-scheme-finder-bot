@@ -1,647 +1,1437 @@
 [
   {
-    "id": "SCH-001",
-    "name": "Central Sector Scheme of Scholarships for College and University Students (CSSS)",
-    "description": "A central government merit-cum-means scholarship scheme by the Department of Higher Education providing financial assistance to meritorious students from low-income families to meet their day-to-day expenses while pursuing higher studies.",
-    "state": "All India",
-    "target_group": "College and University Students",
-    "minimum_age": 17,
-    "maximum_age": 30,
-    "income_limit": 450000,
-    "occupation": ["Student"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "01 July 2026",
-    "application_end_date": "31 October 2026",
-    "application_status": "Applications Open (2026–27 Cycle)",
-    "keywords": ["scholarship", "education", "college", "university", "student", "tuition", "degree", "higher education", "merit"],
-    "benefits": "Rs. 12,000 per annum at Graduation level for the first three years of College and University courses, and Rs. 20,000 per annum at Post-Graduation level. For 5-year professional/integrated courses, Rs. 20,000 per annum in the 4th and 5th year via Direct Benefit Transfer (DBT).",
-    "eligibility": [
-      "Must be above the 80th percentile of successful candidates in the relevant stream in Class XII board examination.",
-      "Must be pursuing regular degree courses (not correspondence or distance mode) in recognized colleges/institutions in India.",
-      "Gross parental/family annual income must not exceed Rs. 4,50,000.",
-      "Must not be receiving any other central or state scholarship or fee reimbursement."
+    "id": "aicte-kapila-patent-support",
+    "name": "KAPILA: Kalam Program for IP Literacy and Awareness (AICTE/MIC)",
+    "authority": "Ministry of Education's Innovation Cell (MIC) & AICTE",
+    "type": "patent_fee_support",
+    "who_applies": "institute",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "max_amount_inr": 10000,
+      "other_conditions": [
+        "Institute must have an active Institution's Innovation Council (IIC) or KAPILA portal registration",
+        "Application must be routed through and submitted by the college KAPILA/IIC coordinator, not individual students"
+      ]
+    },
+    "benefit": {
+      "description": "Financial reimbursement of official patent application filing fees",
+      "amount_inr": null,
+      "notes": "Reimbursement provided to the higher education institution upon successful submission and verification"
+    },
+    "documents_required": [
+      "Invention disclosure form / patent specification draft",
+      "Student bonafide enrollment certificate",
+      "Institute authorization and IIC endorsement letter"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Class 12th Marksheet and Passing Certificate",
-      "Valid Family Income Certificate issued by a competent state authority",
-      "Bonafide Student Certificate / College Admission Proof",
-      "Aadhaar-seeded Bank Account Passbook",
-      "Caste or Disability Certificate (if applicable)"
+    "deadline": null,
+    "application_steps": [
+      "Student discloses invention to college IIC / IP cell coordinator",
+      "College IP committee reviews patentability and prior art",
+      "Institute coordinator files on the official KAPILA portal"
     ],
-    "application_process": "1. Visit the official National Scholarship Portal (NSP) at scholarships.gov.in.\n2. Complete One-Time Registration (OTR) using your Aadhaar and mobile number.\n3. Log in and select 'Central Sector Scheme of Scholarships for College and University Students'.\n4. Fill in academic, personal, and bank details, and upload required documents.\n5. Submit the online application before the closing date and submit a printed copy to your institution for verification.",
-    "official_url": "https://scholarships.gov.in/"
+    "source_url": "https://kapila.mic.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-002",
-    "name": "AICTE Pragati Scholarship Scheme for Girl Students",
-    "description": "An AICTE initiative dedicated to empowering young women to pursue technical education (Degree and Diploma levels) by providing financial assistance for tuition fees, books, laptops, and educational equipment.",
-    "state": "All India",
-    "target_group": "Female Students in Technical Education",
-    "minimum_age": 16,
-    "maximum_age": 28,
-    "income_limit": 800000,
-    "occupation": ["Student"],
-    "gender": "Female",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "15 July 2026",
-    "application_end_date": "30 November 2026",
-    "application_status": "Applications Open (2026–27 Cycle)",
-    "keywords": ["scholarship", "education", "girl", "female", "women", "engineering", "diploma", "technical", "college", "student", "aicte"],
-    "benefits": "Rs. 50,000 per annum for every year of study (maximum 4 years for first-year admitted Degree students and maximum 3 years for Diploma students) as a lump sum towards payment of college fee, purchase of computer, stationery, books, equipment, and software.",
-    "eligibility": [
-      "Applicant must be a female student admitted to the first year or second year (through lateral entry) of a technical Degree or Diploma course in an AICTE-approved institution.",
-      "Maximum two girl children per family are eligible to apply.",
-      "Total annual family income from all sources must not exceed Rs. 8,00,000 during the current financial year."
+    "id": "karnataka-startup-patent-support",
+    "name": "Karnataka Startup Mission Patent Support",
+    "authority": "Karnataka Innovation and Technology Society (KITS), Govt. of Karnataka",
+    "type": "patent_fee_support",
+    "who_applies": "iedc",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": true,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 8: Decent Work and Economic Growth"
+      ],
+      "max_amount_inr": 200000,
+      "other_conditions": [
+        "Applicant must be enrolled in an engineering institution in Karnataka",
+        "College must have an active IEDC / New Age Incubation Network (NAIN) center through which application is forwarded"
+      ]
+    },
+    "benefit": {
+      "description": "Patent cost reimbursement and filing support for student inventions",
+      "amount_inr": null,
+      "notes": "Cost reimbursement is routed and facilitated via the college IEDC / NAIN coordinator"
+    },
+    "documents_required": [
+      "Provisional or complete patent draft specification",
+      "College IEDC / NAIN coordinator recommendation letter",
+      "Karnataka student domicile / bonafide proof"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Class 10th and 12th Marksheets / Diploma Certificate",
-      "AICTE Institution Admission Letter and Tuition Fee Receipt",
-      "Family Income Certificate issued by Tehsildar or competent authority",
-      "Declaration by parents confirming maximum two girl children applying",
-      "Bank Passbook linked with Aadhaar"
+    "deadline": null,
+    "application_steps": [
+      "Present prototype to college IEDC coordinator",
+      "IEDC reviews technical viability and issues recommendation",
+      "IEDC submits application package to Karnataka Startup Cell portal"
     ],
-    "application_process": "1. Register on the National Scholarship Portal (scholarships.gov.in).\n2. Navigate to AICTE Schemes and select 'Pragati Scholarship Scheme for Girl Students'.\n3. Complete the application form with AICTE institution details and upload scanned documents.\n4. Submit the form online before 30 November 2026 for Institute-level and State DTE verification.",
-    "official_url": "https://www.aicte-india.org/schemes/students-development-schemes/Pragati"
+    "source_url": "https://www.missionstartupkarnataka.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-003",
-    "name": "Karnataka State Scholarship Portal (SSP) Post-Matric & Vidyasiri Scholarship",
-    "description": "A Government of Karnataka scholarship program providing fee concession, maintenance allowance, and food & accommodation stipend (Vidyasiri) to post-matric students domiciled in Karnataka.",
-    "state": "Karnataka",
-    "target_group": "Post-Matric Students in Karnataka",
-    "minimum_age": 15,
-    "maximum_age": 32,
-    "income_limit": 250000,
-    "occupation": ["Student"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "01 August 2026",
-    "application_end_date": "31 December 2026",
-    "application_status": "Applications Open (SSP 2026–27)",
-    "keywords": ["scholarship", "karnataka", "education", "student", "hostel", "stipend", "fee", "college", "vidyasiri", "ssp", "udupi", "bengaluru"],
-    "benefits": "Under Vidyasiri (Food & Accommodation Scheme), eligible students who do not secure admission in departmental hostels receive a stipend of Rs. 1,500 per month for 10 months (Rs. 15,000 per year), along with post-matric tuition fee reimbursement as applicable per category.",
-    "eligibility": [
-      "Must be a permanent resident (domicile) of Karnataka.",
-      "Must be enrolled in a post-matric course (PUC, Degree, Diploma, Engineering, Medical, or Postgraduate) in a recognized institution.",
-      "Annual family income must be within Rs. 2,50,000 (up to Rs. 1,00,000 for certain OBC categories under Vidyasiri).",
-      "For Vidyasiri accommodation benefit, residence must be at least 5 km away from the college (or student resides in a different town/city)."
+    "id": "kscst-ip-technical-assistance",
+    "name": "KSCST IP Technical Assistance",
+    "authority": "Karnataka State Council for Science and Technology (KSCST)",
+    "type": "technical_assistance",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "other_conditions": [
+        "Technical invention originated within a Karnataka academic institution"
+      ]
+    },
+    "benefit": {
+      "description": "Technical assistance including prior-art search, patentability assessment, and filing advisory (no direct cash grant)",
+      "amount_inr": null,
+      "notes": "Advisory support provided by KSCST Patent Information Centre (PIC) without direct financial disbursement"
+    },
+    "documents_required": [
+      "Project technical summary and problem statement",
+      "Novelty and inventive step description",
+      "Student college identity card"
     ],
-    "documents": [
-      "Aadhaar Card of Student and Parents",
-      "Karnataka Caste and Income Certificate (with RD Number)",
-      "College Registration Number / SATS ID / University Registration Number",
-      "Previous Year Marks Card and SSLC Registration Number",
-      "Hostel or Local Residence Proof and Fee Receipt",
-      "E-Attestation ID (for Degree/PG courses)"
+    "deadline": null,
+    "application_steps": [
+      "Contact KSCST Patent Information Centre (PIC) with technical summary",
+      "Participate in technical evaluation and prior-art search review with KSCST patent consultants",
+      "Receive advisory report on patentability and recommended drafting path"
     ],
-    "application_process": "1. Visit the Karnataka State Scholarship Portal at ssp.postmatric.karnataka.gov.in.\n2. Create an SSP account using your Aadhaar number and complete e-KYC.\n3. Enter your SATS ID / University registration number, RD number of Income/Caste certificate, and e-Attestation numbers.\n4. Submit the online application before the closing date and track status on the SSP portal.",
-    "official_url": "https://ssp.postmatric.karnataka.gov.in/"
+    "source_url": "https://www.kscst.org.in",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-004",
-    "name": "Karnataka Yuva Nidhi Scheme",
-    "description": "A flagship Government of Karnataka scheme providing monthly unemployment financial assistance and skill training support to recent graduates and diploma holders in Karnataka while they seek employment.",
-    "state": "Karnataka",
-    "target_group": "Graduates and Diploma Holders in Karnataka",
-    "minimum_age": 20,
-    "maximum_age": 30,
-    "income_limit": null,
-    "occupation": ["Unemployed", "Student"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round (01 January 2026 onwards)",
-    "application_end_date": "No Fixed Deadline (Monthly Self-Declaration by 25th of Every Month)",
-    "application_status": "Open Year-Round",
-    "keywords": ["unemployment", "graduate", "diploma", "youth", "allowance", "job", "skill", "karnataka", "stipend", "education"],
-    "benefits": "Monthly financial assistance of Rs. 3,000 for unemployed degree graduates and Rs. 1,500 for unemployed diploma holders for up to 2 years or until the beneficiary secures employment, along with free skill development training under Kaushalkar.",
-    "eligibility": [
-      "Must be a domicile resident of Karnataka who has studied for at least 6 years in Karnataka.",
-      "Must have recently completed a Degree or Diploma and remained unemployed for at least 180 days after graduation.",
-      "Must not be currently pursuing higher studies or employed in government/private sectors or self-employed with loan schemes."
+    "id": "scheme-4-todo",
+    "name": "DST NIDHI-PRAYAS Student Prototype Grant (Pending Verification)",
+    "authority": "Department of Science & Technology (DST), Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [],
+      "college_types": [],
+      "states": [],
+      "project_stages": [],
+      "requires_iedc": null,
+      "other_conditions": []
+    },
+    "benefit": {
+      "description": "Prototype grant support up to Rs. 10 Lakhs for converting student technical ideas into physical POCs",
+      "amount_inr": 1000000,
+      "notes": "Non-dilutive grant-in-aid disbursed via DST-supported Technology Business Incubators (TBIs)"
+    },
+    "documents_required": [
+      "Prototype project proposal and technical roadmap",
+      "Student bonafide college identity card"
     ],
-    "documents": [
-      "Aadhaar Card linked with mobile number and bank account",
-      "Degree or Provisional Degree / Diploma Certificate and Marksheets",
-      "SSLC / PUC / Education Certificates proving 6 years of study in Karnataka",
-      "Domicile / Residence Proof (Ration Card or Voter ID)",
-      "Self-declaration of unemployment status"
+    "deadline": null,
+    "application_steps": [
+      "Apply through nearest DST-recognized TBI"
     ],
-    "application_process": "1. Visit the Seva Sindhu Guarantee Schemes Portal (sevasindhuservices.karnataka.gov.in).\n2. Log in and select the 'Yuva Nidhi Scheme' application form.\n3. Enter your University Registration Number / Diploma Number for automated verification via NAD.\n4. Complete Aadhaar authentication and submit monthly self-declaration before the 25th of each month to receive DBT transfers.",
-    "official_url": "https://sevasindhuservices.karnataka.gov.in/"
+    "source_url": "https://www.nidhi-prayas.org/",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
   },
   {
-    "id": "SCH-005",
-    "name": "Karnataka Gruha Lakshmi Scheme",
-    "description": "A women empowerment welfare scheme by the Government of Karnataka providing direct monthly financial assistance to the woman head of the household to support family livelihood and nutrition.",
-    "state": "Karnataka",
-    "target_group": "Women Heads of Households in Karnataka",
-    "minimum_age": 18,
-    "maximum_age": 100,
-    "income_limit": 250000,
-    "occupation": ["All", "Homemaker", "Farmer", "Daily Wage Worker", "Self-Employed", "Unemployed"],
-    "gender": "Female",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["Married", "Widowed", "Divorced", "All"],
-    "application_start_date": "Open Year-Round (Continuous Enrollment)",
-    "application_end_date": "No Fixed Deadline (Rolling Applications Accepted)",
-    "application_status": "Open Year-Round",
-    "keywords": ["women", "financial assistance", "monthly support", "household", "karnataka", "family", "welfare", "homemaker"],
-    "benefits": "Rs. 2,000 per month transferred directly to the Aadhaar-linked bank account of the woman listed as the head of the family on the household Ration Card.",
-    "eligibility": [
-      "Applicant must be the woman listed as Head of the Family in an Antyodaya, BPL (Below Poverty Line), or APL Ration Card issued by the Government of Karnataka.",
-      "Neither the woman applicant nor her husband should be an income tax payer or GST filer.",
-      "Only one woman per household Ration Card can avail the benefit."
+    "id": "dst-nidhi-prayas-prototype-grant",
+    "name": "DST NIDHI-PRAYAS Hardware & Technology Prototype Grant",
+    "authority": "Department of Science & Technology (DST), Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 7: Affordable and Clean Energy"
+      ],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Focus on physical hardware, fabrication, and technology proof-of-concept prototypes (pure software apps excluded)"
+      ]
+    },
+    "benefit": {
+      "description": "Prototype grant support up to Rs. 10 Lakhs for converting student technical ideas into physical POCs",
+      "amount_inr": 1000000,
+      "notes": "Non-dilutive grant-in-aid disbursed via DST-supported Technology Business Incubators (TBIs)"
+    },
+    "documents_required": [
+      "Prototype project proposal and technical roadmap",
+      "Student bonafide college identity card",
+      "Incubator / TBI endorsement letter"
     ],
-    "documents": [
-      "Antyodaya, BPL, or APL Ration Card showing applicant as Head of Family",
-      "Aadhaar Card of Applicant and Spouse (if applicable)",
-      "Aadhaar-seeded Bank Account Passbook",
-      "Active Mobile Number for OTP verification"
+    "deadline": "Rolling Calls",
+    "application_steps": [
+      "Apply through nearest DST-recognized TBI or institutional incubator center",
+      "Pitch prototype viability to screening committee"
     ],
-    "application_process": "1. Apply online via the Seva Sindhu Guarantee Schemes Portal or visit the nearest Karnataka One, Bangalore One, Grama One, or Bapuji Seva Kendra.\n2. Provide Ration Card number, Aadhaar number, and bank account details.\n3. Complete biometric/OTP verification and collect the acknowledgment receipt.",
-    "official_url": "https://sevasindhuservices.karnataka.gov.in/"
+    "source_url": "https://www.nidhi-prayas.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-006",
-    "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
-    "description": "A central sector income support scheme by the Ministry of Agriculture & Farmers Welfare providing assured financial assistance to landholding farmer families across India to meet agricultural input and household needs.",
-    "state": "All India",
-    "target_group": "Small and Marginal Farmers",
-    "minimum_age": 18,
-    "maximum_age": 100,
-    "income_limit": 300000,
-    "occupation": ["Farmer"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": true,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round (Installment Cycles: Apr–Jul, Aug–Nov, Dec–Mar)",
-    "application_end_date": "No Fixed Closing Date (e-KYC Required Before Next Installment Release)",
-    "application_status": "Open Year-Round",
-    "keywords": ["farmer", "agriculture", "crop", "kisan", "land", "farming", "income support", "rural", "seeds", "fertilizer"],
-    "benefits": "Financial benefit of Rs. 6,000 per year payable in three equal four-monthly installments of Rs. 2,000 each, transferred directly into the bank accounts of eligible farmer families via DBT.",
-    "eligibility": [
-      "Must be a landholding farmer family with cultivable land recorded in state/UT land records.",
-      "Institutional landholders, current/former constitutional post holders, government employees, pensioners receiving Rs. 10,000+ monthly, and income tax payers are excluded.",
-      "e-KYC on the PM-KISAN portal is mandatory to receive installments."
+    "id": "scheme-5-todo",
+    "name": "SIPP: Scheme for Facilitating Start-Ups Intellectual Property Protection",
+    "authority": "Office of the Controller General of Patents, Designs and Trade Marks (CGPDTM)",
+    "type": "patent_fee_support",
+    "who_applies": "faculty",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": null,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "other_conditions": [
+        "Invention originates from college student-faculty team or registered campus startup"
+      ]
+    },
+    "benefit": {
+      "description": "80% statutory fee rebate on patent filing and free advisory support from registered patent facilitators",
+      "amount_inr": null,
+      "notes": "Applicable for student-faculty joint patents and recognized college innovation startups"
+    },
+    "documents_required": [
+      "Invention patent specification Form 1 & 2",
+      "Student/faculty declaration",
+      "Startup or MSME eligibility certificate"
     ],
-    "documents": [
-      "Aadhaar Card (mandatory for e-KYC)",
-      "Land Ownership Documents (RTC / Pahani / Khatauni / Khasra)",
-      "Aadhaar-linked Bank Account Passbook",
-      "Mobile Number linked with Aadhaar"
+    "deadline": null,
+    "application_steps": [
+      "Select a registered IP Facilitator from the official IP India panel",
+      "Facilitator drafts and submits the patent application on the official IP India portal"
     ],
-    "application_process": "1. Visit the official PM-KISAN portal at pmkisan.gov.in.\n2. Click on 'New Farmer Registration' under the Farmers Corner section.\n3. Enter Aadhaar number, select your State, complete OTP verification, and fill in landholding details.\n4. Alternatively, visit the nearest Common Service Centre (CSC) or local Agriculture Department Patwari/Nodal Officer.",
-    "official_url": "https://pmkisan.gov.in/"
+    "source_url": "https://ipindia.gov.in",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-007",
-    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
-    "description": "A government-sponsored crop insurance scheme that provides comprehensive insurance coverage and financial support to farmers in the event of failure of any of the notified crops due to natural calamities, pests, and diseases.",
-    "state": "All India",
-    "target_group": "Cultivating and Sharecropper Farmers",
-    "minimum_age": 18,
-    "maximum_age": 100,
-    "income_limit": null,
-    "occupation": ["Farmer"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": true,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Kharif: 01 June 2026 | Rabi: 01 October 2026",
-    "application_end_date": "Kharif Cut-Off: 31 July 2026 | Rabi Cut-Off: 31 December 2026",
-    "application_status": "Seasonal Window Open (Rabi 2026–27)",
-    "keywords": ["farmer", "crop", "insurance", "agriculture", "drought", "flood", "farming", "loss", "harvest"],
-    "benefits": "Comprehensive risk insurance against crop yield losses from sowing to post-harvest at highly subsidized farmer premium rates: maximum 2% of sum insured for Kharif crops, 1.5% for Rabi crops, and 5% for annual commercial/horticultural crops.",
-    "eligibility": [
-      "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas are eligible.",
-      "Must have an insurable interest in the notified crop and apply before the seasonal cut-off date."
+    "id": "icar-raftaar-agribi-grant",
+    "name": "ICAR R-KAVY RAFTAAR Agri-Business Incubation Grant",
+    "authority": "Indian Council of Agricultural Research (ICAR) & Ministry of Agriculture",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "areca",
+        "nut",
+        "leaf",
+        "plant",
+        "crop",
+        "disease",
+        "agriculture",
+        "botany",
+        "horticulture",
+        "pest",
+        "farm",
+        "soil",
+        "animal",
+        "veterinary",
+        "pathology"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 12: Responsible Consumption and Production",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Project must address plant pathology, crop management, farm mechanization, or agro-processing challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Pre-seed grant of Rs. 5 Lakhs (Idea stage) or Seed grant up to Rs. 25 Lakhs (Prototype stage) with agri-incubation mentoring",
+      "amount_inr": 2500000,
+      "notes": "Disbursed through designated ICAR Knowledge Partners and Agri-Business Incubators (R-ABIs)"
+    },
+    "documents_required": [
+      "Project proposal detailing crop / plant pathology challenge",
+      "Prototype / PoC technical design document",
+      "Student enrollment verification",
+      "Incubation commitment declaration"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Land Possession Certificate / RTC / Tenancy Agreement",
-      "Sowing Certificate issued by Village Panchayat or Agriculture Officer",
-      "Bank Account Passbook with IFSC code"
+    "deadline": "Open in Cohorts (Quarterly)",
+    "application_steps": [
+      "Submit online proposal during R-KAVY call for applications on portal",
+      "Undergo two-month agri-entrepreneurship orientation and technical validation",
+      "Pitch to Seed Support Management Committee (SSMC) for grant sanction"
     ],
-    "application_process": "1. Visit the official PMFBY portal at pmfby.gov.in or apply through your Kisan Credit Card (KCC) bank branch or CSC.\n2. Register as a farmer and enter crop sowing and land survey details.\n3. Pay the nominal farmer share of premium online or through the bank before the seasonal cut-off date and save the policy receipt.",
-    "official_url": "https://pmfby.gov.in/"
+    "source_url": "https://agristartup.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-008",
-    "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
-    "description": "The world's largest public health assurance scheme providing free cashless secondary and tertiary hospitalization care to economically vulnerable families and senior citizens aged 70 and above across India.",
-    "state": "All India",
-    "target_group": "Low-Income Families and Senior Citizens (70+)",
-    "minimum_age": 0,
-    "maximum_age": 100,
-    "income_limit": 250000,
-    "occupation": ["All", "Student", "Farmer", "Daily Wage Worker", "Unemployed", "Self-Employed", "Homemaker", "Salaried"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round (24x7 Ayushman Card Generation)",
-    "application_end_date": "No Deadline (Continuous Enrollment)",
-    "application_status": "Open Year-Round",
-    "keywords": ["health", "medical", "hospital", "insurance", "treatment", "surgery", "medicine", "healthcare", "family", "low income", "senior citizen"],
-    "benefits": "Cashless health insurance cover of up to Rs. 5,00,000 per family per year for secondary and tertiary care hospitalization at over 29,000 empanelled public and private hospitals across India. Covers pre-existing diseases from day one, plus 3 days of pre-hospitalization and 15 days of post-hospitalization expenses.",
-    "eligibility": [
-      "Families listed in the SECC 2011 database or holding an eligible state BPL/NFSA Ration Card.",
-      "All senior citizens aged 70 years and above are eligible for Rs. 5 lakh cover regardless of income.",
-      "No cap on family size, age, or gender for eligible households."
+    "id": "nabard-rural-innovation-fund",
+    "name": "NABARD Rural Innovation Fund (RIF)",
+    "authority": "National Bank for Agriculture and Rural Development (NABARD)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "agriculture",
+        "rural",
+        "crop",
+        "plant",
+        "leaf",
+        "disease",
+        "farmer",
+        "areca",
+        "harvest",
+        "soil",
+        "irrigation"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 2: Zero Hunger",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 2000000,
+      "other_conditions": [
+        "Must demonstrate direct measurable field benefit for farmers or rural agricultural communities"
+      ]
+    },
+    "benefit": {
+      "description": "Grant assistance up to Rs. 20 Lakhs for pilot testing and field validation of farm technologies",
+      "amount_inr": 2000000,
+      "notes": "Supports field trials, farmer feedback studies, and technological prototype hardening"
+    },
+    "documents_required": [
+      "Pilot implementation and field testing plan",
+      "Agricultural community problem validation statement",
+      "Faculty mentor / college endorsement"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Ration Card / Family ID / NFSA Card",
-      "Mobile Number linked with Aadhaar"
+    "deadline": "Rolling Applications",
+    "application_steps": [
+      "Apply through nearest NABARD Regional Office or accredited partner institute",
+      "Technical evaluation by State Advisory Committee"
     ],
-    "application_process": "1. Check eligibility on beneficiary.nha.gov.in or the Ayushman App using your mobile number and Aadhaar.\n2. Complete Aadhaar e-KYC online or at an empanelled hospital (Pradhan Mantri Arogya Mitra desk) or CSC.\n3. Download your Ayushman Card and present it at any empanelled hospital for cashless treatment.",
-    "official_url": "https://pmjay.gov.in/"
+    "source_url": "https://www.nabard.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-009",
-    "name": "AICTE Saksham Scholarship Scheme for Specially-Abled Students",
-    "description": "A scholarship scheme implemented by AICTE aimed at providing encouragement and financial support to specially-abled students to pursue technical education at the Degree or Diploma level.",
-    "state": "All India",
-    "target_group": "Students with Disabilities in Technical Courses",
-    "minimum_age": 16,
-    "maximum_age": 32,
-    "income_limit": 800000,
-    "occupation": ["Student"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": true,
-    "marital_status": ["All"],
-    "application_start_date": "15 July 2026",
-    "application_end_date": "30 November 2026",
-    "application_status": "Applications Open (2026–27 Cycle)",
-    "keywords": ["disability", "disabled", "divyang", "handicapped", "scholarship", "education", "student", "technical", "college", "assistive"],
-    "benefits": "Rs. 50,000 per annum for every year of study (up to 4 years for Degree and 3 years for Diploma) as a lump sum for payment of college fees, purchase of computer, books, stationery, software, and assistive equipment.",
-    "eligibility": [
-      "Applicant must have a benchmark disability of not less than 40%.",
-      "Must be admitted to the first year or second year (through lateral entry) of a Degree or Diploma level course in an AICTE-approved institution.",
-      "Family income from all sources must not exceed Rs. 8,00,000 per annum."
+    "id": "meity-tide-2-innovation-grant",
+    "name": "MeitY TIDE 2.0 (Technology Incubation & Development of Entrepreneurs)",
+    "authority": "Ministry of Electronics and Information Technology (MeitY)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision",
+        "Robotics, IoT & Embedded Systems / Hardware Prototyping"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "machine learning",
+        "deep learning",
+        "computer vision",
+        "cnn",
+        "image processing",
+        "detection",
+        "neural",
+        "iot",
+        "robotics",
+        "embedded",
+        "algorithm"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 8: Decent Work and Economic Growth"
+      ],
+      "max_amount_inr": 700000,
+      "other_conditions": [
+        "Must incorporate an emerging digital technology (AI/ML, Computer Vision, IoT, Robotics) as a primary component"
+      ]
+    },
+    "benefit": {
+      "description": "Rs. 4 Lakhs Entrepreneur-in-Residence (EiR) fellowship or Rs. 7 Lakhs Grant-in-Aid for prototype development",
+      "amount_inr": 700000,
+      "notes": "Disbursed through network of 51 MeitY TIDE 2.0 Incubation Centres across premier institutes"
+    },
+    "documents_required": [
+      "Technical architecture specification",
+      "AI/ML algorithm pipeline description",
+      "Student ID proof"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Disability Certificate (40% or more) / UDID Card issued by competent medical authority",
-      "Class 10th and 12th / Diploma Marksheets",
-      "Family Income Certificate",
-      "College Admission Letter and Tuition Fee Receipt",
-      "Aadhaar-seeded Bank Passbook"
+    "deadline": "Quarterly Call for Proposals",
+    "application_steps": [
+      "Select preferred TIDE 2.0 Incubation Center via MeitY Startup Hub",
+      "Submit online pitch deck and technical dossier",
+      "Screening presentation before incubation review board"
     ],
-    "application_process": "1. Visit the National Scholarship Portal (scholarships.gov.in).\n2. Register and apply under AICTE 'Saksham Scholarship Scheme for Specially-Abled Students'.\n3. Upload your UDID/Disability certificate, income certificate, and academic records.\n4. Submit the form before 30 November 2026 for institute verification.",
-    "official_url": "https://www.aicte-india.org/schemes/students-development-schemes/Saksham"
+    "source_url": "https://msh.meity.gov.in/schemes/tide",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-010",
-    "name": "ADIP Scheme (Assistance to Disabled Persons for Purchase/Fitting of Aids and Appliances)",
-    "description": "A central scheme by the Ministry of Social Justice and Empowerment to assist needy persons with disabilities (Divyangjan) in procuring durable, sophisticated, and scientifically manufactured modern assistive aids and appliances.",
-    "state": "All India",
-    "target_group": "Persons with Disabilities (Divyangjan)",
-    "minimum_age": 0,
-    "maximum_age": 100,
-    "income_limit": 360000,
-    "occupation": ["All", "Student", "Farmer", "Daily Wage Worker", "Unemployed", "Self-Employed", "Homemaker", "Salaried"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": true,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round",
-    "application_end_date": "No Fixed Deadline (Apply Online or at ALIMCO Camps Anytime)",
-    "application_status": "Open Year-Round",
-    "keywords": ["disability", "disabled", "wheelchair", "hearing aid", "prosthetics", "divyang", "assistive", "medical", "appliances"],
-    "benefits": "100% full cost subsidy on assistive devices (tricycles, motorized wheelchairs, prosthetics, hearing aids, Braille kits, smart canes, cochlear implants) for beneficiaries with monthly income up to Rs. 22,500 (Rs. 2,70,000/year), and 50% subsidy for monthly income between Rs. 22,501 and Rs. 30,000 (Rs. 3,60,000/year).",
-    "eligibility": [
-      "Must be an Indian citizen of any age with a 40% or more Disability Certificate (UDID).",
-      "Monthly income from all sources must not exceed Rs. 30,000 (Rs. 3,60,000 annually).",
-      "Must not have received assistance for the same purpose from any government/NGO source during the last 3 years (1 year for children below 12 years)."
+    "id": "meity-genesis-deeptech-support",
+    "name": "MeitY GENESIS (Gen-Next Support for Innovative Startups)",
+    "authority": "Ministry of Electronics and Information Technology (MeitY)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "deeptech",
+        "deep learning",
+        "algorithms",
+        "neural network",
+        "vision",
+        "data systems"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Emphasis on deep-tech innovation and digital public goods originating from Tier-2 and Tier-3 cities"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs non-dilutive prototype acceleration grant + cloud credit bundle",
+      "amount_inr": 1000000,
+      "notes": "Direct funding support for student innovators building scalable AI software systems"
+    },
+    "documents_required": [
+      "Source code repository / architecture document",
+      "Validation metrics / benchmark test results"
     ],
-    "documents": [
-      "UDID Card / Disability Certificate (40% or above)",
-      "Aadhaar Card",
-      "Income Certificate issued by Revenue Authority / MP / MLA / Gazetted Officer",
-      "Passport-size Photographs"
+    "deadline": "Annual Cohort",
+    "application_steps": [
+      "Register on MeitY Startup Hub portal",
+      "Submit proposal under active GENESIS Cohort"
     ],
-    "application_process": "1. Register online on the ALIMCO / DEPwD portal or attend an ADIP assessment camp organized by ALIMCO, DDRCs, or National Institutes.\n2. Undergo assessment by rehabilitation specialists.\n3. Collect the prescribed assistive aid/appliance during the distribution camp.",
-    "official_url": "https://depwd.gov.in/adip-scheme/"
+    "source_url": "https://msh.meity.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-011",
-    "name": "PM-YASASVI Central Sector Scheme of Top Class Education & Post-Matric Scholarship for OBC, EBC and DNT Students",
-    "description": "A Ministry of Social Justice and Empowerment scholarship scheme providing tuition fee reimbursement, living expenses, and academic allowance to meritorious students belonging to OBC, EBC, and DNT categories.",
-    "state": "All India",
-    "target_group": "OBC, EBC, and DNT Category Students",
-    "minimum_age": 14,
-    "maximum_age": 30,
-    "income_limit": 250000,
-    "occupation": ["Student"],
-    "gender": "All",
-    "category": ["OBC", "EWS"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "01 July 2026",
-    "application_end_date": "15 November 2026",
-    "application_status": "Applications Open (2026–27 Cycle)",
-    "keywords": ["scholarship", "obc", "ews", "ebc", "student", "education", "school", "college", "tuition", "hostel"],
-    "benefits": "Academic allowance from Rs. 5,000 to Rs. 20,000 per annum plus tuition fee reimbursement for Post-Matric students, and up to Rs. 75,000 to Rs. 1,25,000 per year for students studying in notified Top Class schools and colleges.",
-    "eligibility": [
-      "Must belong to Other Backward Class (OBC), Economically Backward Class (EBC), or De-notified, Nomadic, and Semi-Nomadic Tribes (DNT).",
-      "Annual parental/family income from all sources must not exceed Rs. 2,50,000.",
-      "Must be studying in a recognized post-matric institution or notified top-class school/college."
+    "id": "c3ihub-cybersecurity-grant",
+    "name": "C3iHub Cybersecurity Innovation Grant",
+    "authority": "C3iHub, Department of Science & Technology & IIT Kanpur",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Cybersecurity, Cryptography & Network Defense"
+      ],
+      "technology_keywords": [
+        "cyber",
+        "cybersecurity",
+        "malware",
+        "cryptography",
+        "encryption",
+        "firewall",
+        "network defense",
+        "penetration",
+        "threat",
+        "vulnerability",
+        "zero trust",
+        "infosec"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Strict mandate: Project MUST address cybersecurity, cyber-physical systems defense, or cryptographic integrity"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs seed grant and specialized cybersecurity testbed access at IIT Kanpur",
+      "amount_inr": 2500000,
+      "notes": "Dedicated mentorship from national cyber defense experts and defense sector sandbox testing"
+    },
+    "documents_required": [
+      "Threat model and security architecture document",
+      "Vulnerability assessment roadmap"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "OBC / EBC / DNT Caste Certificate issued by competent authority",
-      "Family Income Certificate (<= Rs. 2.50 Lakh)",
-      "Previous Year Academic Marksheet",
-      "Fee Receipt and Institution Bonafide Certificate",
-      "Aadhaar-seeded Bank Account Passbook"
+    "deadline": "Bi-annual Cohort",
+    "application_steps": [
+      "Apply through C3iHub portal",
+      "Technical review by cybersecurity advisory panel"
     ],
-    "application_process": "1. Visit the National Scholarship Portal (scholarships.gov.in).\n2. Complete One-Time Registration (OTR) and log in.\n3. Select the PM-YASASVI Post-Matric or Top Class Education scheme under the Ministry of Social Justice and Empowerment.\n4. Upload documents and submit before 15 November 2026 for institutional and state verification.",
-    "official_url": "https://scholarships.gov.in/"
+    "source_url": "https://c3ihub.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-012",
-    "name": "Post-Matric Scholarship for SC and ST Students",
-    "description": "A centrally sponsored scholarship scheme providing complete compulsory non-refundable fee reimbursement and annual academic maintenance allowance to Scheduled Caste (SC) and Scheduled Tribe (ST) students pursuing post-matriculation or post-secondary courses.",
-    "state": "All India",
-    "target_group": "SC and ST Students",
-    "minimum_age": 14,
-    "maximum_age": 35,
-    "income_limit": 250000,
-    "occupation": ["Student"],
-    "gender": "All",
-    "category": ["SC", "ST"],
-    "student_only": true,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "01 July 2026",
-    "application_end_date": "30 November 2026",
-    "application_status": "Applications Open (2026–27 Cycle)",
-    "keywords": ["scholarship", "sc", "st", "student", "education", "college", "fee reimbursement", "hostel", "degree"],
-    "benefits": "100% reimbursement of compulsory non-refundable tuition and course fees, plus an annual academic allowance ranging from Rs. 2,500 to Rs. 13,500 per year depending on course group and hosteller/day-scholar status (10% extra allowance for students with disabilities).",
-    "eligibility": [
-      "Applicant must belong to Scheduled Caste (SC) or Scheduled Tribe (ST) category.",
-      "Must be pursuing a recognized post-matriculation or post-secondary course (Class 11 to Ph.D.).",
-      "Total annual family income from all sources must not exceed Rs. 2,50,000."
+    "id": "dsci-cyber-bharat-grant",
+    "name": "DSCI Cyber Bharat Innovation Grant",
+    "authority": "Data Security Council of India (DSCI) & NASSCOM",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Cybersecurity, Cryptography & Network Defense"
+      ],
+      "technology_keywords": [
+        "cybersecurity",
+        "data privacy",
+        "forensics",
+        "infosec",
+        "threat intelligence",
+        "cryptography",
+        "zero trust"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST focus on digital privacy, endpoint security, or cryptographic defenses"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs prototype innovation grant and industry pilot linkage with major Indian IT enterprises",
+      "amount_inr": 1000000,
+      "notes": "Industry-backed grant for high-impact cybersecurity products"
+    },
+    "documents_required": [
+      "Software prototype demo link",
+      "Security audit / architecture paper"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "SC / ST Caste Certificate with barcode/RD number",
-      "Income Certificate of Parents/Guardian",
-      "Previous Exam Marksheets and Admission Proof",
-      "Bank Passbook linked with Aadhaar"
+    "deadline": "Annual Call",
+    "application_steps": [
+      "Submit challenge response on DSCI Innovation portal",
+      "Finalist pitch at Annual Information Security Summit (AISS)"
     ],
-    "application_process": "1. Apply through the National Scholarship Portal (scholarships.gov.in) or respective State Scholarship Portal (e.g., SSP in Karnataka, MahaDBT in Maharashtra).\n2. Complete Freeship Card generation prior to admission.\n3. Upload academic and caste/income certificates and submit before 30 November 2026 to your college nodal officer.",
-    "official_url": "https://scholarships.gov.in/"
+    "source_url": "https://www.dsci.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-013",
-    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY 4.0) & Skill India Digital",
-    "description": "The flagship skill development scheme of the Ministry of Skill Development and Entrepreneurship (MSDE) enabling Indian youth and students to take up free, industry-relevant skill training, AI/digital courses, and certification.",
-    "state": "All India",
-    "target_group": "Youth, Students, and Job Seekers",
-    "minimum_age": 15,
-    "maximum_age": 45,
-    "income_limit": null,
-    "occupation": ["All", "Student", "Unemployed", "Daily Wage Worker", "Self-Employed"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round (New Batches Start Monthly)",
-    "application_end_date": "No Fixed Deadline (Continuous Online & Offline Enrollment)",
-    "application_status": "Open Year-Round",
-    "keywords": ["skill", "training", "course", "certificate", "job", "employment", "education", "student", "youth", "internship", "career"],
-    "benefits": "100% free short-term industry training (150–600 hours), future-skills courses (AI, Drone, Coding, Mechatronics, Soft Skills), Government-recognized NSQF Skill Certification, and placement/entrepreneurship guidance.",
-    "eligibility": [
-      "Must be an Indian citizen aged between 15 and 45 years.",
-      "Open to college/school students, dropouts, and unemployed youth seeking vocational or digital skill enhancement."
+    "id": "rbih-swanidhi-fintech-grant",
+    "name": "RBIH Swanidhi FinTech Innovation Scheme",
+    "authority": "Reserve Bank Innovation Hub (RBIH), Reserve Bank of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "FinTech, Blockchain & Financial Inclusion"
+      ],
+      "technology_keywords": [
+        "fintech",
+        "banking",
+        "payment",
+        "upi",
+        "credit",
+        "financial inclusion",
+        "cbdc",
+        "defi",
+        "crypto",
+        "fraud detection",
+        "lending",
+        "neobank"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 10: Reduced Inequalities"
+      ],
+      "max_amount_inr": 3000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST focus on financial technology, digital payments, regulatory compliance, or financial inclusion"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 30 Lakhs grant support and direct admission into RBI regulatory sandbox environment",
+      "amount_inr": 3000000,
+      "notes": "Provides live testing environment with partnering commercial banks and payment gateways"
+    },
+    "documents_required": [
+      "Financial product workflow specification",
+      "Regulatory compliance overview",
+      "Student enrollment proof"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Educational Qualification Certificate / Student ID",
-      "Bank Account Passbook",
-      "Passport-size Photograph"
+    "deadline": "Quarterly Application Window",
+    "application_steps": [
+      "Submit proposal on RBIH official portal",
+      "Technical and regulatory evaluation by RBIH innovation panel"
     ],
-    "application_process": "1. Visit the Skill India Digital Hub portal at skillindiadigital.gov.in.\n2. Register as a 'Learner/Participant' using your mobile number and complete Aadhaar e-KYC.\n3. Browse online courses or locate a nearby PMKVY Training Centre (Pradhan Mantri Kaushal Kendra) and enroll for free.",
-    "official_url": "https://www.skillindiadigital.gov.in/"
+    "source_url": "https://rbihub.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-014",
-    "name": "PM Vishwakarma Yojana",
-    "description": "A central sector scheme by the Ministry of Micro, Small and Medium Enterprises providing end-to-end holistic support to traditional artisans and craftspeople working with their hands and tools.",
-    "state": "All India",
-    "target_group": "Artisans, Craftspeople, and Self-Employed Workers",
-    "minimum_age": 18,
-    "maximum_age": 80,
-    "income_limit": null,
-    "occupation": ["Self-Employed", "Daily Wage Worker"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "17 September 2023 (Ongoing 5-Year Mission up to FY 2027–28)",
-    "application_end_date": "31 March 2028 (Currently Open at All CSC Centres)",
-    "application_status": "Applications Open",
-    "keywords": ["artisan", "craftsman", "tailor", "carpenter", "loan", "business", "tool", "self employed", "vishwakarma", "skill"],
-    "benefits": "PM Vishwakarma Certificate and ID card, toolkit e-voucher worth up to Rs. 15,000, skill training with a stipend of Rs. 500/day, and collateral-free enterprise development loans up to Rs. 3,00,000 (Rs. 1 Lakh in 1st tranche + Rs. 2 Lakh in 2nd tranche) at a concessional 5% interest rate.",
-    "eligibility": [
-      "Must be an artisan or craftsperson working with hands and tools in one of the 18 notified family-based traditional trades (e.g., Tailor, Carpenter, Blacksmith, Potter, Mason, Cobbler, Barber, Goldsmith).",
-      "Minimum age of 18 years on the date of registration.",
-      "Must not have availed loans under PMEGP, PM SVANidhi, or Mudra in the past 5 years (unless fully repaid)."
+    "id": "ifsca-gift-city-fintech-grant",
+    "name": "IFSCA FinTech Incentive Scheme (GIFT City)",
+    "authority": "International Financial Services Centres Authority (IFSCA)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "FinTech, Blockchain & Financial Inclusion"
+      ],
+      "technology_keywords": [
+        "fintech",
+        "regtech",
+        "insurtech",
+        "cross-border payments",
+        "capital markets",
+        "blockchain",
+        "trade finance"
+      ],
+      "target_sdgs": [
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "max_amount_inr": 5000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST address global financial services, cross-border remittances, or regulatory technology"
+      ]
+    },
+    "benefit": {
+      "description": "FinTech Proof of Concept (PoC) grant up to Rs. 15 Lakhs or Sandbox grant up to Rs. 30-50 Lakhs",
+      "amount_inr": 5000000,
+      "notes": "Hosted at GIFT IFSC Gujarat for international financial technology solutions"
+    },
+    "documents_required": [
+      "FinTech technical architecture",
+      "Sandbox testing proposal"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Mobile Number linked with Aadhaar",
-      "Bank Account Details",
-      "Ration Card"
+    "deadline": "Open Year-Round",
+    "application_steps": [
+      "Submit online application on IFSCA portal",
+      "Screening by FinTech Evaluation Committee (FEC)"
     ],
-    "application_process": "1. Visit the nearest Common Service Centre (CSC) or check pmvishwakarma.gov.in.\n2. Complete Aadhaar biometric verification and register under your traditional trade.\n3. Undergo three-tier verification (Gram Panchayat/ULB, District Committee, Screening Committee) to receive your Vishwakarma ID and benefits.",
-    "official_url": "https://pmvishwakarma.gov.in/"
+    "source_url": "https://ifsca.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-015",
-    "name": "Pradhan Mantri Mudra Yojana (PMMY)",
-    "description": "A flagship initiative providing collateral-free micro and small business loans up to Rs. 20 Lakh (under Shishu, Kishore, Tarun, and Tarun Plus categories) to non-corporate, non-farm small/micro enterprises.",
-    "state": "All India",
-    "target_group": "Entrepreneurs, Self-Employed, and Small Business Owners",
-    "minimum_age": 18,
-    "maximum_age": 65,
-    "income_limit": null,
-    "occupation": ["Self-Employed", "Unemployed", "Daily Wage Worker"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "Open Year-Round",
-    "application_end_date": "No Fixed Deadline (Apply Anytime via JanSamarth or Banks)",
-    "application_status": "Open Year-Round",
-    "keywords": ["business", "loan", "mudra", "startup", "entrepreneur", "self employed", "shop", "enterprise", "finance"],
-    "benefits": "Collateral-free institutional credit under four stages: Shishu (loans up to Rs. 50,000), Kishore (Rs. 50,000 to Rs. 5 Lakh), Tarun (Rs. 5 Lakh to Rs. 10 Lakh), and Tarun Plus (Rs. 10 Lakh to Rs. 20 Lakh for entrepreneurs who have successfully repaid previous Tarun loans).",
-    "eligibility": [
-      "Any Indian citizen aged 18–65 years who has a business plan for a non-farm income-generating activity such as manufacturing, processing, trading, or service sector.",
-      "Applicant must not be a defaulter to any bank or financial institution."
+    "id": "msme-idea-hackathon",
+    "name": "Ministry of MSME Idea Hackathon (Incubation Scheme)",
+    "authority": "Ministry of Micro, Small & Medium Enterprises (MoMSME)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 12: Responsible Consumption and Production"
+      ],
+      "max_amount_inr": 1500000,
+      "other_conditions": [
+        "Project proposal must be submitted through an approved Host Institution (HI) / engineering college incubator"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 15 Lakhs 100% financial assistance for converting student ideas into commercial products",
+      "amount_inr": 1500000,
+      "notes": "Non-dilutive grant funds machinery, components, testing, and pilot production"
+    },
+    "documents_required": [
+      "Detailed project report (DPR)",
+      "Host Institution recommendation certificate",
+      "Budget breakup summary"
     ],
-    "documents": [
-      "Aadhaar Card and PAN Card",
-      "Business Address Proof and Registration (Udyam Registration if available)",
-      "Brief Business Plan / Quotation of Machinery or Items to be purchased",
-      "Last 6 months Bank Statement",
-      "Caste Certificate (if applying for SC/ST/OBC/Women interest concessions)"
+    "deadline": "Annual Hackathon Call",
+    "application_steps": [
+      "Register idea on MSME Innovative portal",
+      "Endorsement by college Host Institution (HI)",
+      "Evaluation by Project Monitoring & Advisory Committee (PMAC)"
     ],
-    "application_process": "1. Visit the JanSamarth Portal (jansamarth.in) or Mudra Portal (mudra.org.in).\n2. Check eligibility under Business Activity Loans and select Shishu/Kishore/Tarun.\n3. Submit the online application to your preferred public/private sector bank or NBFC.",
-    "official_url": "https://www.mudra.org.in/"
+    "source_url": "https://innovative.msme.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-016",
-    "name": "Pradhan Mantri Awas Yojana (PMAY 2.0 - Urban & Gramin)",
-    "description": "A central government 'Housing for All' mission providing financial subsidy and direct grant assistance to economically weaker sections (EWS), low-income groups (LIG), and houseless rural families to construct or purchase a pucca house.",
-    "state": "All India",
-    "target_group": "Low-Income and Houseless Families",
-    "minimum_age": 18,
-    "maximum_age": 70,
-    "income_limit": 600000,
-    "occupation": ["All", "Farmer", "Daily Wage Worker", "Self-Employed", "Salaried", "Homemaker", "Unemployed"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All"],
-    "application_start_date": "01 September 2024 (PMAY 2.0 Phase)",
-    "application_end_date": "31 March 2029 (Online Portal Currently Accepting Applications)",
-    "application_status": "Applications Open",
-    "keywords": ["house", "housing", "home", "construction", "loan", "subsidy", "awas", "shelter", "family", "bpl"],
-    "benefits": "Up to Rs. 1.20 Lakh – Rs. 1.30 Lakh direct financial grant under PMAY-Gramin (plus 90 days MGNREGA wage support and Rs. 12,000 for toilet construction), and up to Rs. 1.80 Lakh interest subsidy / Rs. 2.50 Lakh central assistance under PMAY-Urban 2.0.",
-    "eligibility": [
-      "The beneficiary family must not own a pucca (all-weather) house anywhere in India.",
-      "Annual household income up to Rs. 3,00,000 for EWS and up to Rs. 6,00,000 for LIG categories.",
-      "Female ownership or co-ownership of the house is prioritized."
+    "id": "kscst-student-project-programme",
+    "name": "KSCST Student Project Programme (SPP) Grant",
+    "authority": "Karnataka State Council for Science and Technology (KSCST)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 6: Clean Water and Sanitation",
+        "SDG 7: Affordable and Clean Energy",
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 25000,
+      "other_conditions": [
+        "Applicant must be a final-year engineering / science student in Karnataka; requires college principal endorsement"
+      ]
+    },
+    "benefit": {
+      "description": "Direct student capstone prototype financial grant (Rs. 5,000 to Rs. 25,000) + State Level Seminar & Exhibition Awards",
+      "amount_inr": 25000,
+      "notes": "Established program funding over 5,000 Karnataka engineering capstone projects annually"
+    },
+    "documents_required": [
+      "SPP project synopsis Form 1A",
+      "Principal & project guide endorsement sheet",
+      "Student group identity cards"
     ],
-    "documents": [
-      "Aadhaar Card of all family members",
-      "Income Certificate",
-      "Affidavit stating no pucca house is owned in India",
-      "Land Ownership / Property Documents (for Beneficiary-Led Construction)",
-      "Bank Account Passbook and Ration Card"
+    "deadline": "31 December Annually",
+    "application_steps": [
+      "Submit synopsis through college SPP coordinator by December annual deadline",
+      "Mid-term project evaluation by KSCST nodal centre experts",
+      "State-level exhibition and cash prize awards for winning projects"
     ],
-    "application_process": "1. For Urban areas, visit pmay-urban.gov.in and click on 'Apply for PMAY-U 2.0'.\n2. For Rural areas, contact your Gram Panchayat Secretary / Block Development Officer with AwaasPlus details.\n3. Complete Aadhaar authentication and upload income and land documents.",
-    "official_url": "https://pmay-urban.gov.in/"
+    "source_url": "http://www.kscst.org.in/spp.html",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-017",
-    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
-    "description": "A maternity benefit scheme implemented by the Ministry of Women and Child Development providing direct cash incentives to pregnant women and lactating mothers for improved health, nutrition, and partial wage loss compensation.",
-    "state": "All India",
-    "target_group": "Pregnant Women and Lactating Mothers",
-    "minimum_age": 19,
-    "maximum_age": 45,
-    "income_limit": 800000,
-    "occupation": ["All", "Homemaker", "Daily Wage Worker", "Farmer", "Self-Employed", "Unemployed"],
-    "gender": "Female",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["Married", "Widowed", "Divorced"],
-    "application_start_date": "Open Year-Round (From Pregnancy Registration at Anganwadi/Health Centre)",
-    "application_end_date": "Within 730 Days from Date of Last Menstrual Period (LMP) or Child Birth",
-    "application_status": "Open Year-Round",
-    "keywords": ["pregnant", "maternity", "mother", "child", "baby", "women", "health", "nutrition", "hospital"],
-    "benefits": "Cash incentive of Rs. 5,000 in two installments for the first living child upon pregnancy registration, antenatal check-up, and child vaccination. Under PMMVY 2.0 (Mission Shakti), an additional incentive of Rs. 6,000 is provided in a single installment if the second child is a girl.",
-    "eligibility": [
-      "Pregnant women and lactating mothers aged 19 years and above.",
-      "Must belong to socially and economically disadvantaged sections (annual income < Rs. 8 Lakh, BPL/Ayushman card holders, SC/ST women, disabled women, or e-Shram/Kisan beneficiaries).",
-      "Must not be in regular central/state government or PSU employment."
+    "id": "birac-big-biotechnology-grant",
+    "name": "BIRAC Biotechnology Ignition Grant (BIG)",
+    "authority": "Biotechnology Industry Research Assistance Council (BIRAC), DBT Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection",
+        "Biotechnology, Life Sciences & Healthcare / Biomedical"
+      ],
+      "technology_keywords": [
+        "plant",
+        "agriculture",
+        "crop",
+        "genomics",
+        "biotech",
+        "diagnostics",
+        "pathology",
+        "disease",
+        "leaf",
+        "biomedical",
+        "microbiology"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 3: Good Health and Well-being",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 5000000,
+      "other_conditions": [
+        "Must propose an innovative biotech, agricultural biology, or diagnostic healthcare solution"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 50 Lakhs equity-free grant support for 18 months of proof-of-concept validation",
+      "amount_inr": 5000000,
+      "notes": "One of India's premier high-impact biotech and agritech grant initiatives"
+    },
+    "documents_required": [
+      "Comprehensive technical proposal",
+      "Lab experimental protocol / data roadmap",
+      "Academic degree certificate"
     ],
-    "documents": [
-      "Aadhaar Card of Mother",
-      "Mother and Child Protection (MCP) Card",
-      "Eligibility Proof (BPL Ration Card / Ayushman Card / Income Certificate / e-Shram Card / Caste Certificate)",
-      "Child Birth Certificate and Immunization Record (for final installment)",
-      "Aadhaar-linked Bank Account Passbook"
+    "deadline": "Bi-annual (January & July Calls)",
+    "application_steps": [
+      "Apply through one of 8 designated BIG Partner Incubators (e.g. C-CAMP Bangalore)",
+      "Two-tier peer review and presentation to Technical Expert Committee (TEC)"
     ],
-    "application_process": "1. Visit the PMMVY portal (pmmvy.wcd.gov.in) or contact your local Anganwadi Worker (AWW) or ASHA worker.\n2. Register using Citizen Login with your mobile number and Aadhaar.\n3. Fill Form 1-A with MCP card details and upload required documents within the eligible window.",
-    "official_url": "https://pmmvy.wcd.gov.in/"
+    "source_url": "https://birac.nic.in/big.php",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
-    "id": "SCH-018",
-    "name": "National Social Assistance Programme (IGNOAPS / IGNDPS / IGNWPS Pension Schemes)",
-    "description": "A centrally sponsored social security pension scheme providing monthly financial pension support to senior citizens, widows, and persons with severe disabilities belonging to Below Poverty Line (BPL) households.",
-    "state": "All India",
-    "target_group": "Senior Citizens, Widows, and Persons with Severe Disabilities",
-    "minimum_age": 18,
-    "maximum_age": 100,
-    "income_limit": 150000,
-    "occupation": ["All", "Unemployed", "Homemaker", "Daily Wage Worker", "Farmer"],
-    "gender": "All",
-    "category": ["All", "General", "OBC", "SC", "ST", "EWS", "Minority"],
-    "student_only": false,
-    "farmer_only": false,
-    "disability_only": false,
-    "marital_status": ["All", "Widowed"],
-    "application_start_date": "Open Year-Round",
-    "application_end_date": "No Fixed Deadline (Rolling Applications Accepted at Seva Sindhu / e-District)",
-    "application_status": "Open Year-Round",
-    "keywords": ["pension", "senior citizen", "old age", "widow", "disability", "monthly support", "social security", "elderly"],
-    "benefits": "Monthly central and state combined pension ranging from Rs. 600 to Rs. 2,000 per month (depending on state top-up) transferred directly to the beneficiary's bank or post office account.",
-    "eligibility": [
-      "Applicant must belong to a Below Poverty Line (BPL) or low-income household.",
-      "For Old Age Pension (IGNOAPS): Age must be 60 years or above.",
-      "For Widow Pension (IGNWPS): Female applicant aged 40–79 years who is widowed.",
-      "For Disability Pension (IGNDPS): Age 18 and above with severe or multiple disabilities (80% or more)."
+    "id": "tata-trusts-social-alpha-agri",
+    "name": "Social Alpha Agritech & Livelihood Innovation Challenge",
+    "authority": "Tata Trusts & Social Alpha (FISE)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "smallholder",
+        "areca",
+        "plant",
+        "crop",
+        "disease",
+        "farm",
+        "soil",
+        "harvest",
+        "agriculture",
+        "detection"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 2: Zero Hunger",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Focus on affordability and usability for smallholder farmers and agricultural communities"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs pilot deployment grant and direct access to Social Alpha farmer testing networks",
+      "amount_inr": 2500000,
+      "notes": "Supported by Tata Trusts philanthropy ecosystem for grassroots impact"
+    },
+    "documents_required": [
+      "Field deployment roadmap",
+      "Affordability / unit economics analysis",
+      "Prototype video / documentation"
     ],
-    "documents": [
-      "Aadhaar Card",
-      "Age Proof (Birth Certificate / Voter ID / School Certificate)",
-      "BPL Ration Card / Income Certificate",
-      "Husband's Death Certificate (for Widow Pension) or UDID Certificate (for Disability Pension)",
-      "Bank or Post Office Account Passbook"
+    "deadline": "Cohort-based",
+    "application_steps": [
+      "Submit challenge application on Social Alpha portal",
+      "Pitch to Social Alpha Agritech Investment Committee"
     ],
-    "application_process": "1. Visit the NSAP portal (nsap.nic.in), UMANG App, or State e-District / Nadakacheri / Seva Sindhu portal.\n2. Fill out the application form for the relevant pension category.\n3. Submit the application online or at the Gram Panchayat / Taluk Office for verification by the Social Welfare Officer.",
-    "official_url": "https://nsap.nic.in/"
+    "source_url": "https://www.socialalpha.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "idex-defence-innovation-grant",
+    "name": "iDEX DISC: Defence India Startup Challenge",
+    "authority": "Innovations for Defence Excellence (iDEX), Ministry of Defence",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Aerospace, Defense & Tactical Technologies"
+      ],
+      "technology_keywords": [
+        "defense",
+        "military",
+        "tactical",
+        "drone",
+        "uav",
+        "radar",
+        "stealth",
+        "battlefield",
+        "aerospace"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
+      "max_amount_inr": 15000000,
+      "other_conditions": [
+        "Strict mandate: Project must solve designated armed forces technological challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 1.5 Crores SPARK grant with field trial access on Indian Armed Forces testing grounds",
+      "amount_inr": 15000000,
+      "notes": "Direct procurement pathway for defense-grade technological innovations"
+    },
+    "documents_required": [
+      "Defence challenge solution design",
+      "System reliability and mil-spec technical dossier"
+    ],
+    "deadline": "Periodic Challenge Windows",
+    "application_steps": [
+      "Register on iDEX defence portal",
+      "Respond to active DISC problem statements",
+      "Screening by Tri-Services technical officers"
+    ],
+    "source_url": "https://idex.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "aim-aic-seed-support",
+    "name": "Atal Innovation Mission (AIM) - AIC Student Prototype Seed Support",
+    "authority": "NITI Aayog, Govt. of India",
+    "type": "incubation_seed",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Open to all cross-disciplinary student engineering innovations addressing societal needs"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs prototype seed grant and pre-incubation facility access across 70+ Atal Incubation Centres",
+      "amount_inr": 2500000,
+      "notes": "Flagship NITI Aayog initiative to nurture student innovations into registered startups"
+    },
+    "documents_required": [
+      "Prototype demonstration report",
+      "Student college bonafide certificate",
+      "Milestone timeline"
+    ],
+    "deadline": "Quarterly Rolling",
+    "application_steps": [
+      "Apply through nearest Atal Incubation Centre (AIC)",
+      "Pitch to AIC Investment Committee"
+    ],
+    "source_url": "https://aim.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "microsoft-research-india-grant",
+    "name": "Microsoft Research India Academic Research & Cloud Grant",
+    "authority": "Microsoft Research India & Microsoft Philanthropies",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "machine learning",
+        "deep learning",
+        "computer vision",
+        "neural",
+        "data science",
+        "detection",
+        "vision",
+        "cnn",
+        "image"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 2: Zero Hunger",
+        "SDG 13: Climate Action"
+      ],
+      "max_amount_inr": 1600000,
+      "other_conditions": [
+        "Project must advance AI/ML algorithms, computer vision architectures, or applied data intelligence"
+      ]
+    },
+    "benefit": {
+      "description": "$5,000 to $20,000 direct academic research funding and GPU computing cloud credits on Microsoft Azure",
+      "amount_inr": 1600000,
+      "notes": "Mentorship from Microsoft Research scientists in Bangalore"
+    },
+    "documents_required": [
+      "Research proposal in IEEE format",
+      "Literature review and baseline model benchmarks",
+      "Faculty advisor letter"
+    ],
+    "deadline": "Annual Call for Proposals",
+    "application_steps": [
+      "Submit research proposal to Microsoft Research India Academic Relations",
+      "Peer review by research scientists"
+    ],
+    "source_url": "https://www.microsoft.com/en-us/research/lab/microsoft-research-india/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "cisco-agritech-youth-challenge",
+    "name": "Cisco India AgriTech Youth Challenge",
+    "authority": "Cisco CSR & NASSCOM Foundation",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection",
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "agriculture",
+        "plant",
+        "leaf",
+        "disease",
+        "crop",
+        "ai",
+        "ml",
+        "iot",
+        "computer vision",
+        "sensor",
+        "areca"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 6: Clean Water and Sanitation",
+        "SDG 12: Responsible Consumption and Production",
+        "SDG 15: Life on Land"
+      ],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Technology must leverage AI, Computer Vision, or IoT to solve agricultural and plant health challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs innovation prize money, Cisco hardware prototyping kit, and incubation mentoring",
+      "amount_inr": 1000000,
+      "notes": "Annual competition run in partnership with NASSCOM Foundation"
+    },
+    "documents_required": [
+      "Technical architecture diagram",
+      "Video demo of prototype",
+      "Student ID proof"
+    ],
+    "deadline": "Annual Hackathon",
+    "application_steps": [
+      "Submit online entry on Cisco ThingQbator / NASSCOM portal",
+      "Shortlisting for virtual hackathon and jury presentation"
+    ],
+    "source_url": "https://thingqbator.nasscomfoundation.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "serb-anrf-student-research",
+    "name": "SERB / ANRF State University Research Excellence (SURE)",
+    "authority": "Anusandhan National Research Foundation (ANRF) & SERB",
+    "type": "grant",
+    "who_applies": "faculty",
+    "eligibility": {
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
+      "requires_iedc": false,
+      "open_theme": true,
+      "requires_faculty": true,
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
+      "max_amount_inr": 3000000,
+      "other_conditions": [
+        "Proposal must be submitted jointly with a faculty mentor as Principal Investigator (PI)"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 30 Lakhs research grant covering student research fellowships, lab equipment, and consumables for 3 years",
+      "amount_inr": 3000000,
+      "notes": "Prestigious national scientific grant for state universities and engineering colleges"
+    },
+    "documents_required": [
+      "Joint faculty-student research proposal",
+      "Institutional endorsement certificate",
+      "Budget justification"
+    ],
+    "deadline": "Annual Call",
+    "application_steps": [
+      "Faculty mentor registers and submits proposal on SERB online portal",
+      "Scientific Advisory Board peer review"
+    ],
+    "source_url": "https://www.serbonline.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   }
 ]

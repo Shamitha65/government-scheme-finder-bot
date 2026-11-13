@@ -6,14 +6,29 @@
     "type": "patent_fee_support",
     "who_applies": "institute",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "max_amount_inr": 10000,
       "other_conditions": [
         "Institute must have an active Institution's Innovation Council (IIC) or KAPILA portal registration",
@@ -36,7 +51,7 @@
       "College IP committee reviews patentability and prior art",
       "Institute coordinator files on the official KAPILA portal"
     ],
-    "source_url": "https://mic.gov.in/kapila",
+    "source_url": "https://kapila.mic.gov.in/",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -47,14 +62,32 @@
     "type": "patent_fee_support",
     "who_applies": "iedc",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
-      "states": ["Karnataka"],
-      "project_stages": ["prototype", "working model"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": true,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 8: Decent Work and Economic Growth"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 8: Decent Work and Economic Growth"
+      ],
       "max_amount_inr": 200000,
       "other_conditions": [
         "Applicant must be enrolled in an engineering institution in Karnataka",
@@ -77,7 +110,7 @@
       "IEDC reviews technical viability and issues recommendation",
       "IEDC submits application package to Karnataka Startup Cell portal"
     ],
-    "source_url": "https://www.startupindia.gov.in",
+    "source_url": "https://www.missionstartupkarnataka.org/",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -88,14 +121,32 @@
     "type": "technical_assistance",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
-      "states": ["Karnataka"],
-      "project_stages": ["idea", "prototype", "working model"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "other_conditions": [
         "Technical invention originated within a Karnataka academic institution"
       ]
@@ -158,14 +209,31 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 7: Affordable and Clean Energy"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 7: Affordable and Clean Energy"
+      ],
       "max_amount_inr": 1000000,
       "other_conditions": [
         "Focus on physical hardware, fabrication, and technology proof-of-concept prototypes (pure software apps excluded)"
@@ -197,14 +265,29 @@
     "type": "patent_fee_support",
     "who_applies": "faculty",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": null,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "other_conditions": [
         "Invention originates from college student-faculty team or registered campus startup"
       ]
@@ -235,15 +318,49 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
-      "technology_keywords": ["areca", "nut", "leaf", "plant", "crop", "disease", "agriculture", "botany", "horticulture", "pest", "farm", "soil", "animal", "veterinary", "pathology"],
-      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 12: Responsible Consumption and Production", "SDG 15: Life on Land"],
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "areca",
+        "nut",
+        "leaf",
+        "plant",
+        "crop",
+        "disease",
+        "agriculture",
+        "botany",
+        "horticulture",
+        "pest",
+        "farm",
+        "soil",
+        "animal",
+        "veterinary",
+        "pathology"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 12: Responsible Consumption and Production",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 2500000,
       "other_conditions": [
         "Project must address plant pathology, crop management, farm mechanization, or agro-processing challenges"
@@ -266,7 +383,7 @@
       "Undergo two-month agri-entrepreneurship orientation and technical validation",
       "Pitch to Seed Support Management Committee (SSMC) for grant sanction"
     ],
-    "source_url": "https://rkvy.nic.in/",
+    "source_url": "https://agristartup.gov.in/",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -277,15 +394,45 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
-      "technology_keywords": ["agriculture", "rural", "crop", "plant", "leaf", "disease", "farmer", "areca", "harvest", "soil", "irrigation"],
-      "target_sdgs": ["SDG 1: No Poverty", "SDG 2: Zero Hunger", "SDG 8: Decent Work and Economic Growth", "SDG 15: Life on Land"],
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "agriculture",
+        "rural",
+        "crop",
+        "plant",
+        "leaf",
+        "disease",
+        "farmer",
+        "areca",
+        "harvest",
+        "soil",
+        "irrigation"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 2: Zero Hunger",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 2000000,
       "other_conditions": [
         "Must demonstrate direct measurable field benefit for farmers or rural agricultural communities"
@@ -317,15 +464,47 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision", "Robotics, IoT & Embedded Systems / Hardware Prototyping"],
-      "technology_keywords": ["ai", "ml", "machine learning", "deep learning", "computer vision", "cnn", "image processing", "detection", "neural", "iot", "robotics", "embedded", "algorithm"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 8: Decent Work and Economic Growth"],
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision",
+        "Robotics, IoT & Embedded Systems / Hardware Prototyping"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "machine learning",
+        "deep learning",
+        "computer vision",
+        "cnn",
+        "image processing",
+        "detection",
+        "neural",
+        "iot",
+        "robotics",
+        "embedded",
+        "algorithm"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 8: Decent Work and Economic Growth"
+      ],
       "max_amount_inr": 700000,
       "other_conditions": [
         "Must incorporate an emerging digital technology (AI/ML, Computer Vision, IoT, Robotics) as a primary component"
@@ -347,7 +526,7 @@
       "Submit online pitch deck and technical dossier",
       "Screening presentation before incubation review board"
     ],
-    "source_url": "https://meitystartuphub.in/schemes/tide-2-0",
+    "source_url": "https://msh.meity.gov.in/schemes/tide",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -358,15 +537,39 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision"],
-      "technology_keywords": ["ai", "ml", "deeptech", "deep learning", "algorithms", "neural network", "vision", "data systems"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "deeptech",
+        "deep learning",
+        "algorithms",
+        "neural network",
+        "vision",
+        "data systems"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "max_amount_inr": 1000000,
       "other_conditions": [
         "Emphasis on deep-tech innovation and digital public goods originating from Tier-2 and Tier-3 cities"
@@ -386,7 +589,7 @@
       "Register on MeitY Startup Hub portal",
       "Submit proposal under active GENESIS Cohort"
     ],
-    "source_url": "https://meitystartuphub.in/",
+    "source_url": "https://msh.meity.gov.in/",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -397,15 +600,45 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Cybersecurity, Cryptography & Network Defense"],
-      "technology_keywords": ["cyber", "cybersecurity", "malware", "cryptography", "encryption", "firewall", "network defense", "penetration", "threat", "vulnerability", "zero trust", "infosec"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "domains": [
+        "Cybersecurity, Cryptography & Network Defense"
+      ],
+      "technology_keywords": [
+        "cyber",
+        "cybersecurity",
+        "malware",
+        "cryptography",
+        "encryption",
+        "firewall",
+        "network defense",
+        "penetration",
+        "threat",
+        "vulnerability",
+        "zero trust",
+        "infosec"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
       "max_amount_inr": 2500000,
       "other_conditions": [
         "Strict mandate: Project MUST address cybersecurity, cyber-physical systems defense, or cryptographic integrity"
@@ -436,15 +669,39 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Cybersecurity, Cryptography & Network Defense"],
-      "technology_keywords": ["cybersecurity", "data privacy", "forensics", "infosec", "threat intelligence", "cryptography", "zero trust"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "domains": [
+        "Cybersecurity, Cryptography & Network Defense"
+      ],
+      "technology_keywords": [
+        "cybersecurity",
+        "data privacy",
+        "forensics",
+        "infosec",
+        "threat intelligence",
+        "cryptography",
+        "zero trust"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
       "max_amount_inr": 1000000,
       "other_conditions": [
         "Strict mandate: Project MUST focus on digital privacy, endpoint security, or cryptographic defenses"
@@ -475,15 +732,45 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["FinTech, Blockchain & Financial Inclusion"],
-      "technology_keywords": ["fintech", "banking", "payment", "upi", "credit", "financial inclusion", "cbdc", "defi", "crypto", "fraud detection", "lending", "neobank"],
-      "target_sdgs": ["SDG 1: No Poverty", "SDG 8: Decent Work and Economic Growth", "SDG 10: Reduced Inequalities"],
+      "domains": [
+        "FinTech, Blockchain & Financial Inclusion"
+      ],
+      "technology_keywords": [
+        "fintech",
+        "banking",
+        "payment",
+        "upi",
+        "credit",
+        "financial inclusion",
+        "cbdc",
+        "defi",
+        "crypto",
+        "fraud detection",
+        "lending",
+        "neobank"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 10: Reduced Inequalities"
+      ],
       "max_amount_inr": 3000000,
       "other_conditions": [
         "Strict mandate: Project MUST focus on financial technology, digital payments, regulatory compliance, or financial inclusion"
@@ -515,15 +802,39 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["FinTech, Blockchain & Financial Inclusion"],
-      "technology_keywords": ["fintech", "regtech", "insurtech", "cross-border payments", "capital markets", "blockchain", "trade finance"],
-      "target_sdgs": ["SDG 8: Decent Work and Economic Growth", "SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "FinTech, Blockchain & Financial Inclusion"
+      ],
+      "technology_keywords": [
+        "fintech",
+        "regtech",
+        "insurtech",
+        "cross-border payments",
+        "capital markets",
+        "blockchain",
+        "trade finance"
+      ],
+      "target_sdgs": [
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "max_amount_inr": 5000000,
       "other_conditions": [
         "Strict mandate: Project MUST address global financial services, cross-border remittances, or regulatory technology"
@@ -554,14 +865,32 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 8: Decent Work and Economic Growth", "SDG 9: Industry, Innovation, and Infrastructure", "SDG 12: Responsible Consumption and Production"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 12: Responsible Consumption and Production"
+      ],
       "max_amount_inr": 1500000,
       "other_conditions": [
         "Project proposal must be submitted through an approved Host Institution (HI) / engineering college incubator"
@@ -594,14 +923,35 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
-      "states": ["Karnataka"],
-      "project_stages": ["idea", "prototype", "working model"],
+      "applicant_status": [
+        "UG",
+        "PG"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 6: Clean Water and Sanitation", "SDG 7: Affordable and Clean Energy", "SDG 9: Industry, Innovation, and Infrastructure", "SDG 15: Life on Land"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 6: Clean Water and Sanitation",
+        "SDG 7: Affordable and Clean Energy",
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 25000,
       "other_conditions": [
         "Applicant must be a final-year engineering / science student in Karnataka; requires college principal endorsement"
@@ -634,15 +984,46 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection", "Biotechnology, Life Sciences & Healthcare / Biomedical"],
-      "technology_keywords": ["plant", "agriculture", "crop", "genomics", "biotech", "diagnostics", "pathology", "disease", "leaf", "biomedical", "microbiology"],
-      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 3: Good Health and Well-being", "SDG 15: Life on Land"],
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection",
+        "Biotechnology, Life Sciences & Healthcare / Biomedical"
+      ],
+      "technology_keywords": [
+        "plant",
+        "agriculture",
+        "crop",
+        "genomics",
+        "biotech",
+        "diagnostics",
+        "pathology",
+        "disease",
+        "leaf",
+        "biomedical",
+        "microbiology"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 3: Good Health and Well-being",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 5000000,
       "other_conditions": [
         "Must propose an innovative biotech, agricultural biology, or diagnostic healthcare solution"
@@ -674,15 +1055,44 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
-      "technology_keywords": ["smallholder", "areca", "plant", "crop", "disease", "farm", "soil", "harvest", "agriculture", "detection"],
-      "target_sdgs": ["SDG 1: No Poverty", "SDG 2: Zero Hunger", "SDG 8: Decent Work and Economic Growth", "SDG 15: Life on Land"],
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection"
+      ],
+      "technology_keywords": [
+        "smallholder",
+        "areca",
+        "plant",
+        "crop",
+        "disease",
+        "farm",
+        "soil",
+        "harvest",
+        "agriculture",
+        "detection"
+      ],
+      "target_sdgs": [
+        "SDG 1: No Poverty",
+        "SDG 2: Zero Hunger",
+        "SDG 8: Decent Work and Economic Growth",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 2500000,
       "other_conditions": [
         "Focus on affordability and usability for smallholder farmers and agricultural communities"
@@ -714,15 +1124,41 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Aerospace, Defense & Tactical Technologies"],
-      "technology_keywords": ["defense", "military", "tactical", "drone", "uav", "radar", "stealth", "battlefield", "aerospace"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "domains": [
+        "Aerospace, Defense & Tactical Technologies"
+      ],
+      "technology_keywords": [
+        "defense",
+        "military",
+        "tactical",
+        "drone",
+        "uav",
+        "radar",
+        "stealth",
+        "battlefield",
+        "aerospace"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 16: Peace, Justice, and Strong Institutions"
+      ],
       "max_amount_inr": 15000000,
       "other_conditions": [
         "Strict mandate: Project must solve designated armed forces technological challenges"
@@ -754,14 +1190,29 @@
     "type": "incubation_seed",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "max_amount_inr": 2500000,
       "other_conditions": [
         "Open to all cross-disciplinary student engineering innovations addressing societal needs"
@@ -793,15 +1244,45 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision"],
-      "technology_keywords": ["ai", "ml", "machine learning", "deep learning", "computer vision", "neural", "data science", "detection", "vision", "cnn", "image"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 2: Zero Hunger", "SDG 13: Climate Action"],
+      "domains": [
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "ai",
+        "ml",
+        "machine learning",
+        "deep learning",
+        "computer vision",
+        "neural",
+        "data science",
+        "detection",
+        "vision",
+        "cnn",
+        "image"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure",
+        "SDG 2: Zero Hunger",
+        "SDG 13: Climate Action"
+      ],
       "max_amount_inr": 1600000,
       "other_conditions": [
         "Project must advance AI/ML algorithms, computer vision architectures, or applied data intelligence"
@@ -833,15 +1314,46 @@
     "type": "grant",
     "who_applies": "student",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["prototype", "working model"],
+      "project_stages": [
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": false,
-      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection", "Artificial Intelligence, Machine Learning & Computer Vision"],
-      "technology_keywords": ["agriculture", "plant", "leaf", "disease", "crop", "ai", "ml", "iot", "computer vision", "sensor", "areca"],
-      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 6: Clean Water and Sanitation", "SDG 12: Responsible Consumption and Production", "SDG 15: Life on Land"],
+      "domains": [
+        "Agriculture, Plant & Animal Sciences / Crop Protection",
+        "Artificial Intelligence, Machine Learning & Computer Vision"
+      ],
+      "technology_keywords": [
+        "agriculture",
+        "plant",
+        "leaf",
+        "disease",
+        "crop",
+        "ai",
+        "ml",
+        "iot",
+        "computer vision",
+        "sensor",
+        "areca"
+      ],
+      "target_sdgs": [
+        "SDG 2: Zero Hunger",
+        "SDG 6: Clean Water and Sanitation",
+        "SDG 12: Responsible Consumption and Production",
+        "SDG 15: Life on Land"
+      ],
       "max_amount_inr": 1000000,
       "other_conditions": [
         "Technology must leverage AI, Computer Vision, or IoT to solve agricultural and plant health challenges"
@@ -862,7 +1374,7 @@
       "Submit online entry on Cisco ThingQbator / NASSCOM portal",
       "Shortlisting for virtual hackathon and jury presentation"
     ],
-    "source_url": "https://www.cisco.com/c/m/en_in/csr.html",
+    "source_url": "https://thingqbator.nasscomfoundation.org/",
     "last_verified": "2026-11-13",
     "confidence": "verified"
   },
@@ -873,15 +1385,31 @@
     "type": "grant",
     "who_applies": "faculty",
     "eligibility": {
-      "applicant_status": ["UG", "PG", "PhD"],
-      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "applicant_status": [
+        "UG",
+        "PG",
+        "PhD"
+      ],
+      "college_types": [
+        "autonomous",
+        "VTU-affiliated",
+        "other"
+      ],
       "states": [],
-      "project_stages": ["idea", "prototype", "working model"],
+      "project_stages": [
+        "idea",
+        "prototype",
+        "working model"
+      ],
       "requires_iedc": false,
       "open_theme": true,
       "requires_faculty": true,
-      "domains": ["*"],
-      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "domains": [
+        "*"
+      ],
+      "target_sdgs": [
+        "SDG 9: Industry, Innovation, and Infrastructure"
+      ],
       "max_amount_inr": 3000000,
       "other_conditions": [
         "Proposal must be submitted jointly with a faculty mentor as Principal Investigator (PI)"
