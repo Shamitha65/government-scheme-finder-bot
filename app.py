@@ -46,6 +46,22 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# Session State & Navigation Scroll Tracking
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+
+if "prev_page" not in st.session_state:
+    st.session_state.prev_page = st.session_state.page
+    st.session_state.should_scroll_top = True
+    st.session_state.scroll_nonce = 0
+elif st.session_state.prev_page != st.session_state.page:
+    st.session_state.prev_page = st.session_state.page
+    st.session_state.should_scroll_top = True
+    st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
+
+# Invisible top page anchor for immediate scroll snapping
+st.markdown('<div id="portal-page-top" style="position:absolute; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none;"></div>', unsafe_allow_html=True)
+
 # Unique Modern UI/UX Styles
 st.markdown(
     """
@@ -329,29 +345,117 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Persistent DOM observer to clean input instructions from parent document
+# Persistent DOM observer & Scroll Navigation Controller
+should_scroll = st.session_state.get("should_scroll_top", False)
+scroll_nonce = st.session_state.get("scroll_nonce", 0)
+st.session_state.should_scroll_top = False
+should_scroll_js = "true" if should_scroll else "false"
+
 import streamlit.components.v1 as components
 components.html(
-    """
+    f"""
     <script>
-    function removeInstructions() {
-        try {
+    // 1. Remove 'Press Enter to submit form' instructions
+    function removeInstructions() {{
+        try {{
             const doc = window.parent.document;
             const els = doc.querySelectorAll('[data-testid="InputInstructions"], [data-baseweb="input"] span, [data-baseweb="input"] div');
-            els.forEach(el => {
-                if (el.textContent && (el.textContent.includes('Enter') || el.textContent.includes('submit form'))) {
+            els.forEach(el => {{
+                if (el.textContent && (el.textContent.includes('Enter') || el.textContent.includes('submit form'))) {{
                     el.style.setProperty('display', 'none', 'important');
                     el.style.setProperty('visibility', 'hidden', 'important');
                     el.style.setProperty('font-size', '0px', 'important');
                     el.style.setProperty('opacity', '0', 'important');
                     el.style.setProperty('position', 'absolute', 'important');
                     el.style.setProperty('left', '-9999px', 'important');
-                }
-            });
-        } catch(e) {}
-    }
+                }}
+            }});
+        }} catch(e) {{}}
+    }}
     setInterval(removeInstructions, 150);
     removeInstructions();
+
+    // 2. Direct Scroll-to-Top Handler
+    function scrollToTopDirect() {{
+        try {{
+            const doc = window.parent.document;
+            const win = window.parent;
+
+            // Immediately blur any chat input textarea that might have grabbed focus
+            const active = doc.activeElement;
+            if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT')) {{
+                if (active.closest && (active.closest('[data-testid="stChatInput"]') || active.closest('.stChatInput'))) {{
+                    active.blur();
+                }}
+            }}
+
+            const containers = [
+                doc.querySelector('.main'),
+                doc.querySelector('section.main'),
+                doc.querySelector('[data-testid="stAppViewContainer"]'),
+                doc.querySelector('.stMainBlockContainer'),
+                doc.querySelector('[data-testid="stMainBlockContainer"]'),
+                doc.documentElement,
+                doc.body,
+                win
+            ];
+
+            containers.forEach(c => {{
+                if (c) {{
+                    if (typeof c.scrollTop !== 'undefined') c.scrollTop = 0;
+                    if (typeof c.scrollLeft !== 'undefined') c.scrollLeft = 0;
+                    if (c.scrollTo) {{
+                        try {{
+                            c.scrollTo({{ top: 0, left: 0, behavior: 'instant' }});
+                        }} catch(err) {{
+                            try {{ c.scrollTo(0, 0); }} catch(err2) {{}}
+                        }}
+                    }}
+                }}
+            }});
+
+            const topEl = doc.getElementById('portal-page-top');
+            if (topEl && topEl.scrollIntoView) {{
+                topEl.scrollIntoView({{ behavior: 'instant', block: 'start' }});
+            }}
+        }} catch(e) {{}}
+    }}
+
+    // 3. Attach Chat Focus Shield (prevents mount autofocus from pulling scroll down)
+    try {{
+        const doc = window.parent.document;
+        if (!doc._chatFocusShieldAttached) {{
+            doc._chatFocusShieldAttached = true;
+            let userIntentionalClick = false;
+
+            doc.addEventListener('pointerdown', function(e) {{
+                if (e.target && e.target.closest && (e.target.closest('[data-testid="stChatInput"]') || e.target.closest('.stChatInput'))) {{
+                    userIntentionalClick = true;
+                }} else {{
+                    userIntentionalClick = false;
+                }}
+            }}, true);
+
+            doc.addEventListener('focusin', function(e) {{
+                if (e.target && e.target.closest && (e.target.closest('[data-testid="stChatInput"]') || e.target.closest('.stChatInput'))) {{
+                    if (!userIntentionalClick) {{
+                        // Programmatic autofocus detected on page load - blur it and stay at top
+                        e.target.blur();
+                        scrollToTopDirect();
+                    }}
+                }}
+            }}, true);
+        }}
+    }} catch(e) {{}}
+
+    // 4. If navigation or top-scroll was requested, enforce top scroll across React mount cycles
+    const shouldScroll = {should_scroll_js};
+    const nonce = {scroll_nonce};
+    if (shouldScroll) {{
+        scrollToTopDirect();
+        const intervals = [20, 50, 80, 120, 180, 250, 350, 500, 700, 950, 1200];
+        intervals.forEach(ms => setTimeout(scrollToTopDirect, ms));
+    }}
     </script>
     """,
     height=0,
@@ -762,6 +866,7 @@ def send_govt_chat(msg: str):
     clean = (msg or "").strip()
     if not clean:
         return
+    st.session_state.should_scroll_top = False
     st.session_state.govt_chat.append({"role": "user", "content": clean})
     reply = ask_govt_scheme_chatbot(clean)
     st.session_state.govt_chat.append({"role": "assistant", "content": reply})
@@ -772,6 +877,7 @@ def send_fund_chat(msg: str):
     clean = (msg or "").strip()
     if not clean:
         return
+    st.session_state.should_scroll_top = False
     st.session_state.fund_chat.append({"role": "user", "content": clean})
     reply = ask_fund_chatbot(clean)
     st.session_state.fund_chat.append({"role": "assistant", "content": reply})
@@ -820,9 +926,10 @@ def render_govt_scheme_chatbot_widget():
 
     st.markdown("<div style='margin-top: 0.6rem;'></div>", unsafe_allow_html=True)
 
-    for msg in st.session_state.govt_chat:
-        with st.chat_message(msg["role"]):
-            st.markdown(msg["content"])
+    with st.container(height=360):
+        for msg in st.session_state.govt_chat:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
 
     if user_msg := st.chat_input("Ask about welfare schemes, scholarships, SSP, CSSS, eligibility...", key="govt_chat_input"):
         send_govt_chat(user_msg)
@@ -870,9 +977,10 @@ def render_fund_chatbot_widget():
 
     st.markdown("<div style='margin-top: 0.6rem;'></div>", unsafe_allow_html=True)
 
-    for msg in st.session_state.fund_chat:
-        with st.chat_message(msg["role"]):
-            st.markdown(msg["content"])
+    with st.container(height=360):
+        for msg in st.session_state.fund_chat:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
 
     if user_msg := st.chat_input("Ask about KAPILA, DST NIDHI, KSCST, provisional patents, novelty...", key="fund_chat_input"):
         send_fund_chat(user_msg)
@@ -914,6 +1022,8 @@ if st.session_state.page == "home":
         )
         if st.button("Explore Govt Schemes →", type="primary", use_container_width=True, key="home_btn_govt"):
             st.session_state.page = "govt_scheme"
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
             st.rerun()
 
     with col2:
@@ -936,6 +1046,8 @@ if st.session_state.page == "home":
         )
         if st.button("Explore Funds & Grants →", type="primary", use_container_width=True, key="home_btn_fund"):
             st.session_state.page = "fund"
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
             st.rerun()
 
 
@@ -949,6 +1061,8 @@ elif st.session_state.page == "govt_scheme":
     with nav_col2:
         if st.button("← Back", use_container_width=True, key="back_from_govt"):
             st.session_state.page = "home"
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
             st.rerun()
 
     welfare_schemes = load_welfare_schemes()
@@ -1024,6 +1138,8 @@ elif st.session_state.page == "govt_scheme":
                 "requirements": w_requirements,
             }
             st.session_state.welfare_submitted = True
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
 
     if st.session_state.welfare_submitted:
         results = match_welfare_schemes(st.session_state.welfare_data, welfare_schemes)
@@ -1085,6 +1201,8 @@ elif st.session_state.page == "fund":
     with nav_col2:
         if st.button("← Back", use_container_width=True, key="back_from_fund"):
             st.session_state.page = "home"
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
             st.rerun()
 
     fund_schemes = load_fund_schemes()
@@ -1156,6 +1274,8 @@ elif st.session_state.page == "fund":
             }
             st.session_state.fund_profile_obj = profile_obj
             st.session_state.fund_submitted = True
+            st.session_state.should_scroll_top = True
+            st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
 
     if st.session_state.fund_submitted:
         prof = st.session_state.fund_profile_obj
