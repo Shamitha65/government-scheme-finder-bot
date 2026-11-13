@@ -1284,8 +1284,6 @@ elif st.session_state.page == "fund":
 
         if prof.project_stage.lower() == "already published":
             st.error("🚨 **Novelty Compromised:** Public disclosure destroys patent novelty under Section 29–34 of Indian Patents Act 1970.")
-        else:
-            st.success(f"🔒 **Novelty Status: SAFE** for '{prof.project_domain}'. Ready to file provisional patent.")
 
         m1, m2, m3 = st.columns(3)
         m1.metric("Eligible", len(report.eligible_schemes))
