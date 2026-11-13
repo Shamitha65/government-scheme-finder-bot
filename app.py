@@ -41,6 +41,14 @@ def app(environ, start_response):
     return [b"Streamlit Application Loading..."]
 
 import streamlit as st
+
+def render_html_block(html_content: str):
+    """
+    Renders raw HTML safely in Streamlit without triggering Markdown's
+    4-space indented code block rule.
+    """
+    lines = [line.strip() for line in html_content.strip().splitlines() if line.strip()]
+    st.markdown(" ".join(lines), unsafe_allow_html=True)
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -1467,12 +1475,12 @@ elif st.session_state.page == "fund":
         # Documentation Readiness Evaluation Card
         doc_info_badge = ""
         if prof.uploaded_document_name:
-            doc_info_badge = f"""
-                <div style="font-size:0.85rem; color:#1e293b; background:#f8fafc; border:1px solid #e2e8f0; padding:0.4rem 0.75rem; border-radius:6px; margin-top:0.5rem;">
-                    📄 <strong>Attached Documentation:</strong> <code>{prof.uploaded_document_name}</code> ({prof.uploaded_document_size_kb:.1f} KB)
-                </div>
-            """
-        st.markdown(
+            doc_info_badge = (
+                f'<div style="font-size:0.85rem; color:#1e293b; background:#f8fafc; border:1px solid #e2e8f0; padding:0.4rem 0.75rem; border-radius:6px; margin-top:0.5rem;">'
+                f'📄 <strong>Attached Documentation:</strong> <code>{prof.uploaded_document_name}</code> ({prof.uploaded_document_size_kb:.1f} KB)'
+                f'</div>'
+            )
+        render_html_block(
             f"""
             <div class="doc-score-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
@@ -1486,8 +1494,7 @@ elif st.session_state.page == "fund":
                 </div>
                 {doc_info_badge}
             </div>
-            """,
-            unsafe_allow_html=True
+            """
         )
 
         m1, m2, m3, m4 = st.columns(4)
@@ -1511,7 +1518,7 @@ elif st.session_state.page == "fund":
                 sdg_html = "".join([f'<span class="pill-badge pill-sdg">🎯 {sdg}</span>' for sdg in ev.matched_sdgs[:3]])
                 reasons_html = "".join([f"<li style='margin-bottom:0.25rem;'>{r}</li>" for r in ev.reasons[:3]])
 
-                st.markdown(
+                render_html_block(
                     f"""
                     <div class="scheme-card">
                         <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
@@ -1538,8 +1545,7 @@ elif st.session_state.page == "fund":
                             <strong style="font-size:0.88rem; color:#334155;">🗂️ Required Documents:</strong> {" ".join([f"<span class='doc-tag'>📄 {d}</span>" for d in s.documents_required[:5]])}
                         </div>
                     </div>
-                    """,
-                    unsafe_allow_html=True,
+                    """
                 )
                 col_f1, col_f2 = st.columns([1, 1])
                 with col_f1:
@@ -1560,7 +1566,7 @@ elif st.session_state.page == "fund":
                 reasons_html = "".join([f"<li style='margin-bottom:0.25rem;'>{r}</li>" for r in ev.reasons[:3]])
                 conditions_html = "".join([f"<li style='margin-bottom:0.25rem;'>{c}</li>" for c in ev.missing_info[:3]])
 
-                st.markdown(
+                render_html_block(
                     f"""
                     <div class="scheme-card" style="border-left: 4px solid #f59e0b;">
                         <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
@@ -1585,8 +1591,7 @@ elif st.session_state.page == "fund":
                             <ul style="margin:0.3rem 0 0 1rem; padding:0;">{conditions_html}</ul>
                         </div>
                     </div>
-                    """,
-                    unsafe_allow_html=True,
+                    """
                 )
                 col_p1, col_p2 = st.columns([1, 1])
                 with col_p1:
@@ -1603,7 +1608,7 @@ elif st.session_state.page == "fund":
                 for ev in report.not_eligible_schemes:
                     s = ev.scheme
                     disqual_text = "; ".join(ev.reasons) if ev.reasons else "Domain mismatch."
-                    st.markdown(
+                    render_html_block(
                         f"""
                         <div class="scheme-card" style="border-left: 4px solid #ef4444; background:#fafafa; opacity:0.92;">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.3rem;">
@@ -1618,8 +1623,7 @@ elif st.session_state.page == "fund":
                                 <strong>Reason for Disqualification:</strong> {disqual_text}
                             </div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
+                        """
                     )
                     st.link_button(f"🌐 Review {s.authority} Mandate on Official Site ↗", s.source_url, use_container_width=True)
                     st.markdown("<div style='margin-bottom:0.8rem;'></div>", unsafe_allow_html=True)
