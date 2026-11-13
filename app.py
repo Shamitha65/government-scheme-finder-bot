@@ -297,6 +297,21 @@ st.markdown(
             padding: 0.15rem 0.45rem !important;
         }
     }
+
+    /* Completely hide the 'Press Enter to submit form' hint and container */
+    [data-testid="InputInstructions"],
+    div[data-testid="InputInstructions"],
+    small[data-testid="InputInstructions"],
+    div:has(> [data-testid="InputInstructions"]) {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -898,7 +913,7 @@ elif st.session_state.page == "govt_scheme":
     welfare_schemes = load_welfare_schemes()
     u_w = st.session_state.welfare_data
 
-    with st.form("govt_scheme_form"):
+    with st.form("govt_scheme_form", enter_to_submit=False):
         st.markdown("#### Enter Details")
         c1, c2, c3 = st.columns(3)
 
@@ -1034,7 +1049,7 @@ elif st.session_state.page == "fund":
     fund_schemes = load_fund_schemes()
     u_f = st.session_state.fund_data
 
-    with st.form("fund_form"):
+    with st.form("fund_form", enter_to_submit=False):
         st.markdown("#### Enter Project Details")
         c1, c2, c3 = st.columns(3)
 
