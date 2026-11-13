@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: national-scheme-fund-portal
+    name: government-scheme-finder-bot
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.enableCORS false --server.enableXsrfProtection false --server.headless true
