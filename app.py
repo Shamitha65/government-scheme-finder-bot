@@ -24,6 +24,7 @@ from engine import (
     SchemeType,
     ConfidenceLevel,
     run_engine,
+    analyze_project_documentation,
 )
 from extractor import (
     extract_scheme_from_text,
@@ -169,6 +170,12 @@ st.markdown(
     .who-iedc { background: #fef3c7; color: #92400e; }
     .who-institute { background: #f3e8ff; color: #6b21a8; }
     .who-faculty { background: #ffedd5; color: #9a3412; }
+    .pill-sdg { background: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4; }
+    .pill-match-open { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .pill-match-direct { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    .pill-match-tech { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    .pill-disqualified { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .doc-score-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; margin-bottom: 1.2rem; }
 
     /* =========================================================================
        MOBILE & PHONE VIEW OPTIMIZATIONS (Screen width <= 768px and <= 480px)
@@ -1197,9 +1204,10 @@ elif st.session_state.page == "govt_scheme":
 elif st.session_state.page == "fund":
     nav_col1, nav_col2 = st.columns([3, 1])
     with nav_col1:
-        st.markdown("## 🚀 Fund & Patent Support")
+        st.markdown("## 🚀 Organization Grants, Funding & Patent Support")
+        st.caption("AI-grounded matching against national funding bodies, ministries, and grant foundations based on project rules, SDGs & research documentation.")
     with nav_col2:
-        if st.button("← Back", use_container_width=True, key="back_from_fund"):
+        if st.button("← Back to Home", use_container_width=True, key="back_from_fund"):
             st.session_state.page = "home"
             st.session_state.should_scroll_top = True
             st.session_state.scroll_nonce = st.session_state.get("scroll_nonce", 0) + 1
@@ -1209,68 +1217,214 @@ elif st.session_state.page == "fund":
     u_f = st.session_state.fund_data
 
     with st.form("fund_form", enter_to_submit=False):
-        st.markdown("#### Enter Project Details")
-        c1, c2, c3 = st.columns(3)
+        st.markdown("### 📋 1. Project Identification & Sector Domain")
+        col_t1, col_t2 = st.columns([2, 1])
+        with col_t1:
+            project_title = st.text_input(
+                "Project Title *",
+                value=u_f.get("project_title", ""),
+                placeholder="e.g. Areca Nut Leaf Disease Detection using Deep Learning",
+                help="Enter your descriptive project title"
+            )
+        with col_t2:
+            domain_opts = [
+                "-- Select Domain --",
+                "Agriculture, Plant & Animal Sciences / Crop Protection",
+                "Artificial Intelligence, Machine Learning & Computer Vision",
+                "General / Open Theme (Any Impactful Problem Statement)",
+                "Biotechnology, Life Sciences & Healthcare / Biomedical",
+                "Cybersecurity, Cryptography & Network Defense",
+                "FinTech, Blockchain & Financial Inclusion",
+                "Renewable Energy, CleanTech & Environmental Engineering",
+                "Robotics, IoT & Embedded Systems / Hardware Prototyping",
+                "Aerospace, Defense & Tactical Technologies",
+                "Smart Cities, Waste Management & Sanitation",
+                "EdTech, Digital Media & Social Innovation"
+            ]
+            d_idx = domain_opts.index(u_f.get("project_domain")) if u_f.get("project_domain") in domain_opts else 0
+            project_domain = st.selectbox("Project Domain / Sector *", domain_opts, index=d_idx)
 
+        # 17 UN SDGs + None Option
+        sdg_opts = [
+            "SDG 1: No Poverty",
+            "SDG 2: Zero Hunger",
+            "SDG 3: Good Health and Well-being",
+            "SDG 4: Quality Education",
+            "SDG 5: Gender Equality",
+            "SDG 6: Clean Water and Sanitation",
+            "SDG 7: Affordable and Clean Energy",
+            "SDG 8: Decent Work and Economic Growth",
+            "SDG 9: Industry, Innovation, and Infrastructure",
+            "SDG 10: Reduced Inequalities",
+            "SDG 11: Sustainable Cities and Communities",
+            "SDG 12: Responsible Consumption and Production",
+            "SDG 13: Climate Action",
+            "SDG 14: Life Below Water",
+            "SDG 15: Life on Land",
+            "SDG 16: Peace, Justice, and Strong Institutions",
+            "SDG 17: Partnerships for the Goals",
+            "None / Not Mapped to SDG"
+        ]
+        default_sdgs = u_f.get("selected_sdgs", [])
+        valid_default_sdgs = [s for s in default_sdgs if s in sdg_opts]
+        selected_sdgs = st.multiselect(
+            "UN Sustainable Development Goals (SDGs) Mapped to Project *",
+            options=sdg_opts,
+            default=valid_default_sdgs,
+            help="Select any number of SDGs that your project maps to. If it does not map to any SDG, select 'None / Not Mapped to SDG'."
+        )
+
+        st.markdown("### 🎓 2. Academic & Institutional Eligibility")
+        c1, c2, c3 = st.columns(3)
         with c1:
-            project_domain = st.text_input("Project Title / Area *", value=u_f.get("project_domain", ""), placeholder="e.g. Smart Agri Drone, Medical Sensor")
+            college_name = st.text_input(
+                "College / University Name *",
+                value=u_f.get("college_name", ""),
+                placeholder="e.g. Canara Engineering College, Mangalore"
+            )
             status_opts = ["-- Select Status --", "UG", "PG", "PhD"]
             s_idx = status_opts.index(u_f.get("student_status")) if u_f.get("student_status") in status_opts else 0
-            student_status = st.selectbox("Student Status *", status_opts, index=s_idx)
+            student_status = st.selectbox("Degree Level *", status_opts, index=s_idx)
 
         with c2:
-            state_opts = ["-- Select State --", "Karnataka", "Maharashtra", "Tamil Nadu", "Telangana", "Andhra Pradesh", "Kerala", "Delhi", "Other"]
+            state_opts = ["-- Select State --", "Karnataka", "Maharashtra", "Tamil Nadu", "Telangana", "Andhra Pradesh", "Kerala", "Delhi", "Gujarat", "Uttar Pradesh", "West Bengal", "Other"]
             st_idx = state_opts.index(u_f.get("state")) if u_f.get("state") in state_opts else 0
-            state = st.selectbox("State *", state_opts, index=st_idx)
+            state = st.selectbox("State / Location *", state_opts, index=st_idx)
 
-            college_opts = ["-- Select Affiliation --", "autonomous", "VTU-affiliated", "other"]
+            college_opts = ["-- Select Affiliation --", "autonomous", "VTU-affiliated", "AICTE-approved", "Central / Tier-1 (IIT/NIT/IISc)", "other"]
             cl_idx = college_opts.index(u_f.get("college_type")) if u_f.get("college_type") in college_opts else 0
             college_type = st.selectbox("College Affiliation *", college_opts, index=cl_idx)
 
         with c3:
             stage_opts = ["-- Select Stage --", "idea", "prototype", "working model", "already published"]
             stg_idx = stage_opts.index(u_f.get("project_stage")) if u_f.get("project_stage") in stage_opts else 0
-            project_stage = st.selectbox("Project Stage *", stage_opts, index=stg_idx, help="'already published' destroys patent novelty.")
+            project_stage = st.selectbox("Project Stage / Status *", stage_opts, index=stg_idx, help="'already published' destroys patent novelty under Section 29–34 of Indian Patents Act.")
 
             iedc_opts = ["-- Select IEDC Status --", "yes", "no", "not sure"]
             ie_idx = iedc_opts.index(u_f.get("has_iedc")) if u_f.get("has_iedc") in iedc_opts else 0
             has_iedc = st.selectbox("College IEDC / Incubation Center? *", iedc_opts, index=ie_idx)
 
-        faculty_mentor = st.checkbox("Faculty mentor available?", value=u_f.get("faculty_mentor_available", False))
+        c_f1, c_f2 = st.columns(2)
+        with c_f1:
+            funding_amount_required = st.number_input(
+                "Amount of Fund Required (in INR) *",
+                min_value=0,
+                max_value=50000000,
+                step=10000,
+                value=int(u_f.get("funding_amount_required", 200000)),
+                help="Estimated budget required for prototyping, components, lab trials, and patent filing"
+            )
+        with c_f2:
+            faculty_mentor = st.checkbox(
+                "Faculty mentor / project guide available for application endorsement?",
+                value=u_f.get("faculty_mentor_available", True),
+                help="Some national research grants (e.g. SERB SURE) require a faculty mentor as Principal Investigator."
+            )
 
-        btn_search_f = st.form_submit_button("Find Pathways", type="primary", use_container_width=True)
+        st.markdown("### 📄 3. Project Documentation & Research Dossier")
+        st.caption("Detailed project documentation is evaluated to compute proposal readiness and novelty for screening committees.")
+
+        with st.expander("📝 Enter Project Documentation (Abstract, Literature Survey, Methodology, Novelty, Citations)", expanded=True):
+            d_col1, d_col2 = st.columns(2)
+            with d_col1:
+                abstract = st.text_area(
+                    "1. Abstract & Executive Summary",
+                    value=u_f.get("abstract", ""),
+                    placeholder="Briefly state the real-world problem, proposed solution, and measurable expected impact...",
+                    height=95
+                )
+                literature_survey = st.text_area(
+                    "2. Literature Survey & Background",
+                    value=u_f.get("literature_survey", ""),
+                    placeholder="Summarize recent papers, prior art, and state-of-the-art benchmarks in this field...",
+                    height=95
+                )
+                technical_approach = st.text_area(
+                    "3. Technical Approach & Architecture",
+                    value=u_f.get("technical_approach", ""),
+                    placeholder="Describe system workflow, algorithms (e.g. CNN, YOLO), hardware components, and methodology...",
+                    height=95
+                )
+
+            with d_col2:
+                innovation_novelty = st.text_area(
+                    "4. Innovation & Novelty (New Research Done in Existing Project)",
+                    value=u_f.get("innovation_novelty", ""),
+                    placeholder="Highlight the new research contributions, unique algorithms, or structural advancements done...",
+                    height=95
+                )
+                existing_solutions = st.text_area(
+                    "5. Existing Solutions & Limitations Addressed",
+                    value=u_f.get("existing_solutions", ""),
+                    placeholder="Explain current commercial products or baseline papers and their specific bottlenecks (accuracy, cost, latency)...",
+                    height=95
+                )
+                research_papers = st.text_area(
+                    "6. Research Papers Referred & Used (Key Citations)",
+                    value=u_f.get("research_papers", ""),
+                    placeholder="e.g. 1. Author et al., 'Plant Disease Diagnosis using Deep CNN', IEEE Access, 2024...",
+                    height=95
+                )
+
+        btn_search_f = st.form_submit_button("🔍 Find Matching Organizations & Grant Pathways", type="primary", use_container_width=True)
 
     if btn_search_f:
-        if not project_domain.strip():
-            st.error("Please enter project title.")
+        if not project_title.strip():
+            st.error("Please enter the Project Title.")
+        elif project_domain.startswith("--"):
+            st.error("Please select the Project Domain.")
+        elif not selected_sdgs:
+            st.error("Please select at least one UN SDG or choose 'None / Not Mapped to SDG'.")
+        elif not college_name.strip():
+            st.error("Please enter your College / University Name.")
         elif student_status.startswith("--"):
-            st.error("Please select student status.")
+            st.error("Please select your Degree Level.")
         elif state.startswith("--"):
-            st.error("Please select state.")
+            st.error("Please select your State.")
         elif college_type.startswith("--"):
-            st.error("Please select college affiliation.")
+            st.error("Please select College Affiliation.")
         elif project_stage.startswith("--"):
-            st.error("Please select project stage.")
+            st.error("Please select Project Stage.")
         elif has_iedc.startswith("--"):
-            st.error("Please select IEDC status.")
+            st.error("Please select IEDC / Incubation status.")
         else:
             profile_obj = StudentProfile(
                 student_status=student_status,
                 college_type=college_type,
                 state=state,
-                project_domain=project_domain.strip(),
+                project_domain=project_domain,
                 project_stage=project_stage,
                 has_iedc=has_iedc,
                 faculty_mentor_available=faculty_mentor,
+                project_title=project_title.strip(),
+                college_name=college_name.strip(),
+                selected_sdgs=selected_sdgs,
+                funding_amount_required=float(funding_amount_required),
+                abstract=abstract.strip(),
+                literature_survey=literature_survey.strip(),
+                technical_approach=technical_approach.strip(),
+                innovation_novelty=innovation_novelty.strip(),
+                existing_solutions=existing_solutions.strip(),
+                research_papers=research_papers.strip(),
             )
             st.session_state.fund_data = {
                 "student_status": student_status,
                 "college_type": college_type,
                 "state": state,
-                "project_domain": project_domain.strip(),
+                "project_domain": project_domain,
                 "project_stage": project_stage,
                 "has_iedc": has_iedc,
                 "faculty_mentor_available": faculty_mentor,
+                "project_title": project_title.strip(),
+                "college_name": college_name.strip(),
+                "selected_sdgs": selected_sdgs,
+                "funding_amount_required": float(funding_amount_required),
+                "abstract": abstract.strip(),
+                "literature_survey": literature_survey.strip(),
+                "technical_approach": technical_approach.strip(),
+                "innovation_novelty": innovation_novelty.strip(),
+                "existing_solutions": existing_solutions.strip(),
+                "research_papers": research_papers.strip(),
             }
             st.session_state.fund_profile_obj = profile_obj
             st.session_state.fund_submitted = True
@@ -1280,21 +1434,51 @@ elif st.session_state.page == "fund":
     if st.session_state.fund_submitted:
         prof = st.session_state.fund_profile_obj
         report = run_engine(prof, fund_schemes)
+        doc_eval = analyze_project_documentation(prof)
         st.session_state.fund_matched_schemes = report.eligible_schemes + report.possibly_eligible_schemes
 
         if prof.project_stage.lower() == "already published":
             st.error("🚨 **Novelty Compromised:** Public disclosure destroys patent novelty under Section 29–34 of Indian Patents Act 1970.")
 
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Eligible", len(report.eligible_schemes))
-        m2.metric("Possibly Eligible", len(report.possibly_eligible_schemes))
-        m3.metric("Action Steps", len(report.action_checklist))
+        # Documentation Readiness Evaluation Card
+        st.markdown(
+            f"""
+            <div class="doc-score-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.6rem;">
+                    <div>
+                        <h4 style="margin:0 0 0.2rem 0; color:#0f172a; font-weight:700;">📊 Research Dossier & Grant Proposal Readiness</h4>
+                        <span style="font-size:0.85rem; color:#475569;">Evaluated from abstract, literature survey, technical approach, innovation novelty & citations</span>
+                    </div>
+                    <span style="font-size:1.1rem; font-weight:800; color:{doc_eval['badge_color']}; background:#ffffff; padding:0.35rem 0.85rem; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+                        {doc_eval['score']}% — {doc_eval['verdict']}
+                    </span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric("Directly Approved", len(report.eligible_schemes))
+        m2.metric("Tech Track / Conditional", len(report.possibly_eligible_schemes))
+        m3.metric("Disqualified Orgs", len(report.not_eligible_schemes))
+        m4.metric("Action Steps", len(report.action_checklist))
+
+        # 1. DIRECTLY ELIGIBLE
         if report.eligible_schemes:
-            st.markdown("### ✅ Directly Eligible Grant & Patent Pathways")
+            st.markdown("### ✅ Directly Approved Organizations & Grant Pathways")
+            st.caption("These organizations either match your domain directly (e.g. Plant/Agriculture) or accept open/general problem statements.")
             for ev in report.eligible_schemes:
                 s = ev.scheme
                 who_val = s.who_applies.value.upper()
+                match_badge = (
+                    '<span class="pill-badge pill-match-open">🟢 Approved: General Problem Statement</span>'
+                    if ev.domain_match_type == "open_theme"
+                    else '<span class="pill-badge pill-match-direct">🟢 Approved: Direct Sector Match</span>'
+                )
+                sdg_html = "".join([f'<span class="pill-badge pill-sdg">🎯 {sdg}</span>' for sdg in ev.matched_sdgs[:3]])
+                reasons_html = "".join([f"<li style='margin-bottom:0.25rem;'>{r}</li>" for r in ev.reasons[:3]])
+
                 st.markdown(
                     f"""
                     <div class="scheme-card">
@@ -1302,7 +1486,8 @@ elif st.session_state.page == "fund":
                             <div>
                                 <span class="pill-badge pill-state">🏛️ {s.authority}</span>
                                 <span class="pill-badge who-{s.who_applies.value}">WHO APPLIES: {who_val}</span>
-                                <span class="pill-badge pill-status">🟢 Verified Live</span>
+                                {match_badge}
+                                {sdg_html}
                             </div>
                             <span style="font-size:0.75rem; font-weight:700; color:#475569; background:#f1f5f9; padding:0.2rem 0.5rem; border-radius:6px;">{s.id}</span>
                         </div>
@@ -1310,11 +1495,15 @@ elif st.session_state.page == "fund":
                         <div class="benefit-box">
                             <strong>💰 Grant / Funding Benefit:</strong> {s.benefit.description}
                         </div>
+                        <div class="why-box">
+                            <strong>✓ Why Approved & Rules Matched:</strong>
+                            <ul style="margin:0.3rem 0 0 1rem; padding:0;">{reasons_html}</ul>
+                        </div>
                         <div style="font-size:0.88rem; color:#334155; margin-bottom:0.5rem;">
                             <strong>ℹ️ Key Notes:</strong> {s.benefit.notes or s.benefit.description}
                         </div>
                         <div style="margin-bottom:0.8rem;">
-                            <strong style="font-size:0.88rem; color:#334155;">🗂️ Required Documents:</strong> {" ".join([f"<span class='doc-tag'>📄 {d}</span>" for d in s.documents_required])}
+                            <strong style="font-size:0.88rem; color:#334155;">🗂️ Required Documents:</strong> {" ".join([f"<span class='doc-tag'>📄 {d}</span>" for d in s.documents_required[:5]])}
                         </div>
                     </div>
                     """,
@@ -1322,17 +1511,23 @@ elif st.session_state.page == "fund":
                 )
                 col_f1, col_f2 = st.columns([1, 1])
                 with col_f1:
-                    st.link_button("🌐 Official Website & Apply ↗", s.source_url, use_container_width=True)
+                    st.link_button("🌐 Official Portal & Application Guidelines ↗", s.source_url, use_container_width=True)
                 with col_f2:
-                    if st.button("💬 Ask AI About This Grant", key=f"ask_fund_{s.id}", use_container_width=True):
-                        send_fund_chat(f"Tell me more about {s.name}, its funding process, and patent rules.")
+                    if st.button("💬 Ask AI About This Organization", key=f"ask_fund_{s.id}", use_container_width=True):
+                        send_fund_chat(f"Tell me more about {s.name}, its grant selection rules, and application process.")
                 st.markdown("<div style='margin-bottom:1.2rem;'></div>", unsafe_allow_html=True)
 
+        # 2. CONDITIONALLY ELIGIBLE / TECH TRACK
         if report.possibly_eligible_schemes:
-            st.markdown("### 🟡 Conditionally Eligible Grant Pathways")
+            st.markdown("### ⚡ Interdisciplinary & Applied Technology Grant Tracks (Conditional)")
+            st.caption("Organizations that focus on AI/ML or technology components applied to your domain (e.g. AI applied to agriculture).")
             for ev in report.possibly_eligible_schemes:
                 s = ev.scheme
                 who_val = s.who_applies.value.upper()
+                sdg_html = "".join([f'<span class="pill-badge pill-sdg">🎯 {sdg}</span>' for sdg in ev.matched_sdgs[:3]])
+                reasons_html = "".join([f"<li style='margin-bottom:0.25rem;'>{r}</li>" for r in ev.reasons[:3]])
+                conditions_html = "".join([f"<li style='margin-bottom:0.25rem;'>{c}</li>" for c in ev.missing_info[:3]])
+
                 st.markdown(
                     f"""
                     <div class="scheme-card" style="border-left: 4px solid #f59e0b;">
@@ -1340,7 +1535,8 @@ elif st.session_state.page == "fund":
                             <div>
                                 <span class="pill-badge pill-state">🏛️ {s.authority}</span>
                                 <span class="pill-badge who-{s.who_applies.value}">WHO APPLIES: {who_val}</span>
-                                <span class="pill-badge" style="background:#fef3c7; color:#92400e; border:1px solid #fde68a;">🟡 Action Needed</span>
+                                <span class="pill-badge pill-match-tech">⚡ Interdisciplinary / Applied Technology</span>
+                                {sdg_html}
                             </div>
                             <span style="font-size:0.75rem; font-weight:700; color:#475569; background:#f1f5f9; padding:0.2rem 0.5rem; border-radius:6px;">{s.id}</span>
                         </div>
@@ -1348,8 +1544,13 @@ elif st.session_state.page == "fund":
                         <div class="benefit-box">
                             <strong>💰 Grant / Funding Benefit:</strong> {s.benefit.description}
                         </div>
+                        <div class="why-box" style="background:#eff6ff; border-color:#3b82f6; color:#1e3a8a;">
+                            <strong>⚡ Why Conditionally Matched:</strong>
+                            <ul style="margin:0.3rem 0 0 1rem; padding:0;">{reasons_html}</ul>
+                        </div>
                         <div class="why-box" style="background:#fffbeb; border-color:#f59e0b; color:#92400e;">
-                            <strong>⚠️ Condition to Confirm:</strong> {', '.join(ev.missing_info)}
+                            <strong>⚠️ Condition / Verification to Note:</strong>
+                            <ul style="margin:0.3rem 0 0 1rem; padding:0;">{conditions_html}</ul>
                         </div>
                     </div>
                     """,
@@ -1357,21 +1558,65 @@ elif st.session_state.page == "fund":
                 )
                 col_p1, col_p2 = st.columns([1, 1])
                 with col_p1:
-                    st.link_button("🌐 Official Website & Apply ↗", s.source_url, use_container_width=True)
+                    st.link_button("🌐 Official Portal & Application Guidelines ↗", s.source_url, use_container_width=True)
                 with col_p2:
-                    if st.button("💬 Ask AI About This Grant", key=f"ask_fund_poss_{s.id}", use_container_width=True):
-                        send_fund_chat(f"Tell me more about {s.name} and conditions to confirm: {', '.join(ev.missing_info)}")
+                    if st.button("💬 Ask AI About This Organization", key=f"ask_fund_poss_{s.id}", use_container_width=True):
+                        send_fund_chat(f"Tell me more about {s.name} and how to apply under interdisciplinary technology track.")
                 st.markdown("<div style='margin-bottom:1.2rem;'></div>", unsafe_allow_html=True)
 
-        st.markdown("### 📋 Action Checklist")
+        # 3. DISQUALIFIED ORGANIZATIONS
+        if report.not_eligible_schemes:
+            with st.expander(f"❌ View Disqualified Organizations ({len(report.not_eligible_schemes)}) — Understand Specific Mandate Mismatches", expanded=False):
+                st.caption("These organizations strictly fund other sectors (e.g. Cybersecurity only, FinTech only, Defence only) and do not approve your project domain.")
+                for ev in report.not_eligible_schemes:
+                    s = ev.scheme
+                    disqual_text = "; ".join(ev.reasons) if ev.reasons else "Domain mismatch."
+                    st.markdown(
+                        f"""
+                        <div class="scheme-card" style="border-left: 4px solid #ef4444; background:#fafafa; opacity:0.92;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.3rem;">
+                                <div>
+                                    <span class="pill-badge pill-state">🏛️ {s.authority}</span>
+                                    <span class="pill-badge pill-disqualified">❌ Not Eligible (Domain Mismatch)</span>
+                                </div>
+                                <span style="font-size:0.75rem; font-weight:700; color:#64748b; background:#f1f5f9; padding:0.2rem 0.5rem; border-radius:6px;">{s.id}</span>
+                            </div>
+                            <h4 style="margin:0 0 0.3rem 0; font-size:1.1rem; color:#334155;">{s.name}</h4>
+                            <div style="font-size:0.88rem; color:#991b1b; background:#fef2f2; border:1px solid #fee2e2; padding:0.5rem 0.8rem; border-radius:6px; margin:0.4rem 0;">
+                                <strong>Reason for Disqualification:</strong> {disqual_text}
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.link_button(f"🌐 Review {s.authority} Mandate on Official Site ↗", s.source_url, use_container_width=True)
+                    st.markdown("<div style='margin-bottom:0.8rem;'></div>", unsafe_allow_html=True)
+
+        # 4. ACTION CHECKLIST
+        st.markdown("### 📋 Action Checklist & Grant Application Plan")
         for item in report.action_checklist:
             st.markdown(f"**Step {item.step_number}: {item.title}**")
             st.write(item.description)
 
-        md_text = f"# Action Plan for {prof.student_status} Student\nProject: {prof.project_domain}\n\n"
+        md_text = f"# Grant Application & Patent Action Plan\n"
+        md_text += f"**Project Title:** {prof.project_title}\n"
+        md_text += f"**Domain:** {prof.project_domain}\n"
+        md_text += f"**Mapped SDGs:** {', '.join(prof.selected_sdgs)}\n"
+        md_text += f"**College:** {prof.college_name} ({prof.student_status}, {prof.state})\n"
+        md_text += f"**Requested Budget:** ₹{prof.funding_amount_required:,.0f}\n\n"
+        md_text += f"## Proposal Documentation Readiness Score: {doc_eval['score']}% ({doc_eval['verdict']})\n\n"
+        md_text += f"## Directly Eligible Organizations ({len(report.eligible_schemes)} matched):\n"
+        for ev in report.eligible_schemes:
+            md_text += f"- **{ev.scheme.name}** ({ev.scheme.authority}): {ev.scheme.benefit.description} [Portal]({ev.scheme.source_url})\n"
+        md_text += f"\n## Interdisciplinary / Technology Track ({len(report.possibly_eligible_schemes)} matched):\n"
+        for ev in report.possibly_eligible_schemes:
+            md_text += f"- **{ev.scheme.name}** ({ev.scheme.authority}): {ev.scheme.benefit.description} [Portal]({ev.scheme.source_url})\n"
+        md_text += f"\n## Recommended Sequential Action Steps:\n"
         for item in report.action_checklist:
             md_text += f"### Step {item.step_number}: {item.title}\n{item.description}\n\n"
-        st.download_button("📥 Download Action Plan (.md)", data=md_text, file_name="Action_Plan.md")
+        clean_title = prof.project_title[:20].replace(' ', '_') if prof.project_title else "Project"
+        st.download_button("📥 Download Action Plan (.md)", data=md_text, file_name=f"Action_Plan_{clean_title}.md")
 
     st.markdown("---")
     render_fund_chatbot_widget()
+

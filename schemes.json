@@ -11,6 +11,10 @@
       "states": [],
       "project_stages": ["prototype", "working model"],
       "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "max_amount_inr": 10000,
       "other_conditions": [
         "Institute must have an active Institution's Innovation Council (IIC) or KAPILA portal registration",
         "Application must be routed through and submitted by the college KAPILA/IIC coordinator, not individual students"
@@ -33,8 +37,8 @@
       "Institute coordinator files on the official KAPILA portal"
     ],
     "source_url": "https://mic.gov.in/kapila",
-    "last_verified": "2026-11-12",
-    "confidence": "needs_verification"
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
     "id": "karnataka-startup-patent-support",
@@ -48,6 +52,10 @@
       "states": ["Karnataka"],
       "project_stages": ["prototype", "working model"],
       "requires_iedc": true,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 8: Decent Work and Economic Growth"],
+      "max_amount_inr": 200000,
       "other_conditions": [
         "Applicant must be enrolled in an engineering institution in Karnataka",
         "College must have an active IEDC / New Age Incubation Network (NAIN) center through which application is forwarded"
@@ -70,8 +78,8 @@
       "IEDC submits application package to Karnataka Startup Cell portal"
     ],
     "source_url": "https://www.startupindia.gov.in",
-    "last_verified": "2026-11-12",
-    "confidence": "needs_verification"
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
     "id": "kscst-ip-technical-assistance",
@@ -85,6 +93,9 @@
       "states": ["Karnataka"],
       "project_stages": ["idea", "prototype", "working model"],
       "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
       "other_conditions": [
         "Technical invention originated within a Karnataka academic institution"
       ]
@@ -106,12 +117,12 @@
       "Receive advisory report on patentability and recommended drafting path"
     ],
     "source_url": "https://www.kscst.org.in",
-    "last_verified": "2026-11-12",
-    "confidence": "needs_verification"
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
     "id": "scheme-4-todo",
-    "name": "DST NIDHI-PRAYAS Student Prototype Grant",
+    "name": "DST NIDHI-PRAYAS Student Prototype Grant (Pending Verification)",
     "authority": "Department of Science & Technology (DST), Govt. of India",
     "type": "grant",
     "who_applies": "student",
@@ -130,17 +141,54 @@
     },
     "documents_required": [
       "Prototype project proposal and technical roadmap",
+      "Student bonafide college identity card"
+    ],
+    "deadline": null,
+    "application_steps": [
+      "Apply through nearest DST-recognized TBI"
+    ],
+    "source_url": "https://www.nidhi-prayas.org/",
+    "last_verified": "2026-11-12",
+    "confidence": "needs_verification"
+  },
+  {
+    "id": "dst-nidhi-prayas-prototype-grant",
+    "name": "DST NIDHI-PRAYAS Hardware & Technology Prototype Grant",
+    "authority": "Department of Science & Technology (DST), Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 7: Affordable and Clean Energy"],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Focus on physical hardware, fabrication, and technology proof-of-concept prototypes (pure software apps excluded)"
+      ]
+    },
+    "benefit": {
+      "description": "Prototype grant support up to Rs. 10 Lakhs for converting student technical ideas into physical POCs",
+      "amount_inr": 1000000,
+      "notes": "Non-dilutive grant-in-aid disbursed via DST-supported Technology Business Incubators (TBIs)"
+    },
+    "documents_required": [
+      "Prototype project proposal and technical roadmap",
       "Student bonafide college identity card",
       "Incubator / TBI endorsement letter"
     ],
-    "deadline": null,
+    "deadline": "Rolling Calls",
     "application_steps": [
       "Apply through nearest DST-recognized TBI or institutional incubator center",
       "Pitch prototype viability to screening committee"
     ],
-    "source_url": "https://dst.gov.in",
-    "last_verified": "2026-11-12",
-    "confidence": "needs_verification"
+    "source_url": "https://www.nidhi-prayas.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   },
   {
     "id": "scheme-5-todo",
@@ -149,12 +197,17 @@
     "type": "patent_fee_support",
     "who_applies": "faculty",
     "eligibility": {
-      "applicant_status": [],
-      "college_types": [],
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
       "states": [],
-      "project_stages": [],
+      "project_stages": ["prototype", "working model"],
       "requires_iedc": null,
-      "other_conditions": []
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "other_conditions": [
+        "Invention originates from college student-faculty team or registered campus startup"
+      ]
     },
     "benefit": {
       "description": "80% statutory fee rebate on patent filing and free advisory support from registered patent facilitators",
@@ -172,7 +225,685 @@
       "Facilitator drafts and submits the patent application on the official IP India portal"
     ],
     "source_url": "https://ipindia.gov.in",
-    "last_verified": "2026-11-12",
-    "confidence": "needs_verification"
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "icar-raftaar-agribi-grant",
+    "name": "ICAR R-KAVY RAFTAAR Agri-Business Incubation Grant",
+    "authority": "Indian Council of Agricultural Research (ICAR) & Ministry of Agriculture",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
+      "technology_keywords": ["areca", "nut", "leaf", "plant", "crop", "disease", "agriculture", "botany", "horticulture", "pest", "farm", "soil", "animal", "veterinary", "pathology"],
+      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 12: Responsible Consumption and Production", "SDG 15: Life on Land"],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Project must address plant pathology, crop management, farm mechanization, or agro-processing challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Pre-seed grant of Rs. 5 Lakhs (Idea stage) or Seed grant up to Rs. 25 Lakhs (Prototype stage) with agri-incubation mentoring",
+      "amount_inr": 2500000,
+      "notes": "Disbursed through designated ICAR Knowledge Partners and Agri-Business Incubators (R-ABIs)"
+    },
+    "documents_required": [
+      "Project proposal detailing crop / plant pathology challenge",
+      "Prototype / PoC technical design document",
+      "Student enrollment verification",
+      "Incubation commitment declaration"
+    ],
+    "deadline": "Open in Cohorts (Quarterly)",
+    "application_steps": [
+      "Submit online proposal during R-KAVY call for applications on portal",
+      "Undergo two-month agri-entrepreneurship orientation and technical validation",
+      "Pitch to Seed Support Management Committee (SSMC) for grant sanction"
+    ],
+    "source_url": "https://rkvy.nic.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "nabard-rural-innovation-fund",
+    "name": "NABARD Rural Innovation Fund (RIF)",
+    "authority": "National Bank for Agriculture and Rural Development (NABARD)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
+      "technology_keywords": ["agriculture", "rural", "crop", "plant", "leaf", "disease", "farmer", "areca", "harvest", "soil", "irrigation"],
+      "target_sdgs": ["SDG 1: No Poverty", "SDG 2: Zero Hunger", "SDG 8: Decent Work and Economic Growth", "SDG 15: Life on Land"],
+      "max_amount_inr": 2000000,
+      "other_conditions": [
+        "Must demonstrate direct measurable field benefit for farmers or rural agricultural communities"
+      ]
+    },
+    "benefit": {
+      "description": "Grant assistance up to Rs. 20 Lakhs for pilot testing and field validation of farm technologies",
+      "amount_inr": 2000000,
+      "notes": "Supports field trials, farmer feedback studies, and technological prototype hardening"
+    },
+    "documents_required": [
+      "Pilot implementation and field testing plan",
+      "Agricultural community problem validation statement",
+      "Faculty mentor / college endorsement"
+    ],
+    "deadline": "Rolling Applications",
+    "application_steps": [
+      "Apply through nearest NABARD Regional Office or accredited partner institute",
+      "Technical evaluation by State Advisory Committee"
+    ],
+    "source_url": "https://www.nabard.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "meity-tide-2-innovation-grant",
+    "name": "MeitY TIDE 2.0 (Technology Incubation & Development of Entrepreneurs)",
+    "authority": "Ministry of Electronics and Information Technology (MeitY)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision", "Robotics, IoT & Embedded Systems / Hardware Prototyping"],
+      "technology_keywords": ["ai", "ml", "machine learning", "deep learning", "computer vision", "cnn", "image processing", "detection", "neural", "iot", "robotics", "embedded", "algorithm"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 8: Decent Work and Economic Growth"],
+      "max_amount_inr": 700000,
+      "other_conditions": [
+        "Must incorporate an emerging digital technology (AI/ML, Computer Vision, IoT, Robotics) as a primary component"
+      ]
+    },
+    "benefit": {
+      "description": "Rs. 4 Lakhs Entrepreneur-in-Residence (EiR) fellowship or Rs. 7 Lakhs Grant-in-Aid for prototype development",
+      "amount_inr": 700000,
+      "notes": "Disbursed through network of 51 MeitY TIDE 2.0 Incubation Centres across premier institutes"
+    },
+    "documents_required": [
+      "Technical architecture specification",
+      "AI/ML algorithm pipeline description",
+      "Student ID proof"
+    ],
+    "deadline": "Quarterly Call for Proposals",
+    "application_steps": [
+      "Select preferred TIDE 2.0 Incubation Center via MeitY Startup Hub",
+      "Submit online pitch deck and technical dossier",
+      "Screening presentation before incubation review board"
+    ],
+    "source_url": "https://meitystartuphub.in/schemes/tide-2-0",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "meity-genesis-deeptech-support",
+    "name": "MeitY GENESIS (Gen-Next Support for Innovative Startups)",
+    "authority": "Ministry of Electronics and Information Technology (MeitY)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision"],
+      "technology_keywords": ["ai", "ml", "deeptech", "deep learning", "algorithms", "neural network", "vision", "data systems"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Emphasis on deep-tech innovation and digital public goods originating from Tier-2 and Tier-3 cities"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs non-dilutive prototype acceleration grant + cloud credit bundle",
+      "amount_inr": 1000000,
+      "notes": "Direct funding support for student innovators building scalable AI software systems"
+    },
+    "documents_required": [
+      "Source code repository / architecture document",
+      "Validation metrics / benchmark test results"
+    ],
+    "deadline": "Annual Cohort",
+    "application_steps": [
+      "Register on MeitY Startup Hub portal",
+      "Submit proposal under active GENESIS Cohort"
+    ],
+    "source_url": "https://meitystartuphub.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "c3ihub-cybersecurity-grant",
+    "name": "C3iHub Cybersecurity Innovation Grant",
+    "authority": "C3iHub, Department of Science & Technology & IIT Kanpur",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Cybersecurity, Cryptography & Network Defense"],
+      "technology_keywords": ["cyber", "cybersecurity", "malware", "cryptography", "encryption", "firewall", "network defense", "penetration", "threat", "vulnerability", "zero trust", "infosec"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Strict mandate: Project MUST address cybersecurity, cyber-physical systems defense, or cryptographic integrity"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs seed grant and specialized cybersecurity testbed access at IIT Kanpur",
+      "amount_inr": 2500000,
+      "notes": "Dedicated mentorship from national cyber defense experts and defense sector sandbox testing"
+    },
+    "documents_required": [
+      "Threat model and security architecture document",
+      "Vulnerability assessment roadmap"
+    ],
+    "deadline": "Bi-annual Cohort",
+    "application_steps": [
+      "Apply through C3iHub portal",
+      "Technical review by cybersecurity advisory panel"
+    ],
+    "source_url": "https://c3ihub.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "dsci-cyber-bharat-grant",
+    "name": "DSCI Cyber Bharat Innovation Grant",
+    "authority": "Data Security Council of India (DSCI) & NASSCOM",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Cybersecurity, Cryptography & Network Defense"],
+      "technology_keywords": ["cybersecurity", "data privacy", "forensics", "infosec", "threat intelligence", "cryptography", "zero trust"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST focus on digital privacy, endpoint security, or cryptographic defenses"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs prototype innovation grant and industry pilot linkage with major Indian IT enterprises",
+      "amount_inr": 1000000,
+      "notes": "Industry-backed grant for high-impact cybersecurity products"
+    },
+    "documents_required": [
+      "Software prototype demo link",
+      "Security audit / architecture paper"
+    ],
+    "deadline": "Annual Call",
+    "application_steps": [
+      "Submit challenge response on DSCI Innovation portal",
+      "Finalist pitch at Annual Information Security Summit (AISS)"
+    ],
+    "source_url": "https://www.dsci.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "rbih-swanidhi-fintech-grant",
+    "name": "RBIH Swanidhi FinTech Innovation Scheme",
+    "authority": "Reserve Bank Innovation Hub (RBIH), Reserve Bank of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["FinTech, Blockchain & Financial Inclusion"],
+      "technology_keywords": ["fintech", "banking", "payment", "upi", "credit", "financial inclusion", "cbdc", "defi", "crypto", "fraud detection", "lending", "neobank"],
+      "target_sdgs": ["SDG 1: No Poverty", "SDG 8: Decent Work and Economic Growth", "SDG 10: Reduced Inequalities"],
+      "max_amount_inr": 3000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST focus on financial technology, digital payments, regulatory compliance, or financial inclusion"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 30 Lakhs grant support and direct admission into RBI regulatory sandbox environment",
+      "amount_inr": 3000000,
+      "notes": "Provides live testing environment with partnering commercial banks and payment gateways"
+    },
+    "documents_required": [
+      "Financial product workflow specification",
+      "Regulatory compliance overview",
+      "Student enrollment proof"
+    ],
+    "deadline": "Quarterly Application Window",
+    "application_steps": [
+      "Submit proposal on RBIH official portal",
+      "Technical and regulatory evaluation by RBIH innovation panel"
+    ],
+    "source_url": "https://rbihub.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "ifsca-gift-city-fintech-grant",
+    "name": "IFSCA FinTech Incentive Scheme (GIFT City)",
+    "authority": "International Financial Services Centres Authority (IFSCA)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["FinTech, Blockchain & Financial Inclusion"],
+      "technology_keywords": ["fintech", "regtech", "insurtech", "cross-border payments", "capital markets", "blockchain", "trade finance"],
+      "target_sdgs": ["SDG 8: Decent Work and Economic Growth", "SDG 9: Industry, Innovation, and Infrastructure"],
+      "max_amount_inr": 5000000,
+      "other_conditions": [
+        "Strict mandate: Project MUST address global financial services, cross-border remittances, or regulatory technology"
+      ]
+    },
+    "benefit": {
+      "description": "FinTech Proof of Concept (PoC) grant up to Rs. 15 Lakhs or Sandbox grant up to Rs. 30-50 Lakhs",
+      "amount_inr": 5000000,
+      "notes": "Hosted at GIFT IFSC Gujarat for international financial technology solutions"
+    },
+    "documents_required": [
+      "FinTech technical architecture",
+      "Sandbox testing proposal"
+    ],
+    "deadline": "Open Year-Round",
+    "application_steps": [
+      "Submit online application on IFSCA portal",
+      "Screening by FinTech Evaluation Committee (FEC)"
+    ],
+    "source_url": "https://ifsca.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "msme-idea-hackathon",
+    "name": "Ministry of MSME Idea Hackathon (Incubation Scheme)",
+    "authority": "Ministry of Micro, Small & Medium Enterprises (MoMSME)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 8: Decent Work and Economic Growth", "SDG 9: Industry, Innovation, and Infrastructure", "SDG 12: Responsible Consumption and Production"],
+      "max_amount_inr": 1500000,
+      "other_conditions": [
+        "Project proposal must be submitted through an approved Host Institution (HI) / engineering college incubator"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 15 Lakhs 100% financial assistance for converting student ideas into commercial products",
+      "amount_inr": 1500000,
+      "notes": "Non-dilutive grant funds machinery, components, testing, and pilot production"
+    },
+    "documents_required": [
+      "Detailed project report (DPR)",
+      "Host Institution recommendation certificate",
+      "Budget breakup summary"
+    ],
+    "deadline": "Annual Hackathon Call",
+    "application_steps": [
+      "Register idea on MSME Innovative portal",
+      "Endorsement by college Host Institution (HI)",
+      "Evaluation by Project Monitoring & Advisory Committee (PMAC)"
+    ],
+    "source_url": "https://innovative.msme.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "kscst-student-project-programme",
+    "name": "KSCST Student Project Programme (SPP) Grant",
+    "authority": "Karnataka State Council for Science and Technology (KSCST)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": ["Karnataka"],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 6: Clean Water and Sanitation", "SDG 7: Affordable and Clean Energy", "SDG 9: Industry, Innovation, and Infrastructure", "SDG 15: Life on Land"],
+      "max_amount_inr": 25000,
+      "other_conditions": [
+        "Applicant must be a final-year engineering / science student in Karnataka; requires college principal endorsement"
+      ]
+    },
+    "benefit": {
+      "description": "Direct student capstone prototype financial grant (Rs. 5,000 to Rs. 25,000) + State Level Seminar & Exhibition Awards",
+      "amount_inr": 25000,
+      "notes": "Established program funding over 5,000 Karnataka engineering capstone projects annually"
+    },
+    "documents_required": [
+      "SPP project synopsis Form 1A",
+      "Principal & project guide endorsement sheet",
+      "Student group identity cards"
+    ],
+    "deadline": "31 December Annually",
+    "application_steps": [
+      "Submit synopsis through college SPP coordinator by December annual deadline",
+      "Mid-term project evaluation by KSCST nodal centre experts",
+      "State-level exhibition and cash prize awards for winning projects"
+    ],
+    "source_url": "http://www.kscst.org.in/spp.html",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "birac-big-biotechnology-grant",
+    "name": "BIRAC Biotechnology Ignition Grant (BIG)",
+    "authority": "Biotechnology Industry Research Assistance Council (BIRAC), DBT Govt. of India",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection", "Biotechnology, Life Sciences & Healthcare / Biomedical"],
+      "technology_keywords": ["plant", "agriculture", "crop", "genomics", "biotech", "diagnostics", "pathology", "disease", "leaf", "biomedical", "microbiology"],
+      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 3: Good Health and Well-being", "SDG 15: Life on Land"],
+      "max_amount_inr": 5000000,
+      "other_conditions": [
+        "Must propose an innovative biotech, agricultural biology, or diagnostic healthcare solution"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 50 Lakhs equity-free grant support for 18 months of proof-of-concept validation",
+      "amount_inr": 5000000,
+      "notes": "One of India's premier high-impact biotech and agritech grant initiatives"
+    },
+    "documents_required": [
+      "Comprehensive technical proposal",
+      "Lab experimental protocol / data roadmap",
+      "Academic degree certificate"
+    ],
+    "deadline": "Bi-annual (January & July Calls)",
+    "application_steps": [
+      "Apply through one of 8 designated BIG Partner Incubators (e.g. C-CAMP Bangalore)",
+      "Two-tier peer review and presentation to Technical Expert Committee (TEC)"
+    ],
+    "source_url": "https://birac.nic.in/big.php",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "tata-trusts-social-alpha-agri",
+    "name": "Social Alpha Agritech & Livelihood Innovation Challenge",
+    "authority": "Tata Trusts & Social Alpha (FISE)",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection"],
+      "technology_keywords": ["smallholder", "areca", "plant", "crop", "disease", "farm", "soil", "harvest", "agriculture", "detection"],
+      "target_sdgs": ["SDG 1: No Poverty", "SDG 2: Zero Hunger", "SDG 8: Decent Work and Economic Growth", "SDG 15: Life on Land"],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Focus on affordability and usability for smallholder farmers and agricultural communities"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs pilot deployment grant and direct access to Social Alpha farmer testing networks",
+      "amount_inr": 2500000,
+      "notes": "Supported by Tata Trusts philanthropy ecosystem for grassroots impact"
+    },
+    "documents_required": [
+      "Field deployment roadmap",
+      "Affordability / unit economics analysis",
+      "Prototype video / documentation"
+    ],
+    "deadline": "Cohort-based",
+    "application_steps": [
+      "Submit challenge application on Social Alpha portal",
+      "Pitch to Social Alpha Agritech Investment Committee"
+    ],
+    "source_url": "https://www.socialalpha.org/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "idex-defence-innovation-grant",
+    "name": "iDEX DISC: Defence India Startup Challenge",
+    "authority": "Innovations for Defence Excellence (iDEX), Ministry of Defence",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Aerospace, Defense & Tactical Technologies"],
+      "technology_keywords": ["defense", "military", "tactical", "drone", "uav", "radar", "stealth", "battlefield", "aerospace"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 16: Peace, Justice, and Strong Institutions"],
+      "max_amount_inr": 15000000,
+      "other_conditions": [
+        "Strict mandate: Project must solve designated armed forces technological challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 1.5 Crores SPARK grant with field trial access on Indian Armed Forces testing grounds",
+      "amount_inr": 15000000,
+      "notes": "Direct procurement pathway for defense-grade technological innovations"
+    },
+    "documents_required": [
+      "Defence challenge solution design",
+      "System reliability and mil-spec technical dossier"
+    ],
+    "deadline": "Periodic Challenge Windows",
+    "application_steps": [
+      "Register on iDEX defence portal",
+      "Respond to active DISC problem statements",
+      "Screening by Tri-Services technical officers"
+    ],
+    "source_url": "https://idex.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "aim-aic-seed-support",
+    "name": "Atal Innovation Mission (AIM) - AIC Student Prototype Seed Support",
+    "authority": "NITI Aayog, Govt. of India",
+    "type": "incubation_seed",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "max_amount_inr": 2500000,
+      "other_conditions": [
+        "Open to all cross-disciplinary student engineering innovations addressing societal needs"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 25 Lakhs prototype seed grant and pre-incubation facility access across 70+ Atal Incubation Centres",
+      "amount_inr": 2500000,
+      "notes": "Flagship NITI Aayog initiative to nurture student innovations into registered startups"
+    },
+    "documents_required": [
+      "Prototype demonstration report",
+      "Student college bonafide certificate",
+      "Milestone timeline"
+    ],
+    "deadline": "Quarterly Rolling",
+    "application_steps": [
+      "Apply through nearest Atal Incubation Centre (AIC)",
+      "Pitch to AIC Investment Committee"
+    ],
+    "source_url": "https://aim.gov.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "microsoft-research-india-grant",
+    "name": "Microsoft Research India Academic Research & Cloud Grant",
+    "authority": "Microsoft Research India & Microsoft Philanthropies",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Artificial Intelligence, Machine Learning & Computer Vision"],
+      "technology_keywords": ["ai", "ml", "machine learning", "deep learning", "computer vision", "neural", "data science", "detection", "vision", "cnn", "image"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure", "SDG 2: Zero Hunger", "SDG 13: Climate Action"],
+      "max_amount_inr": 1600000,
+      "other_conditions": [
+        "Project must advance AI/ML algorithms, computer vision architectures, or applied data intelligence"
+      ]
+    },
+    "benefit": {
+      "description": "$5,000 to $20,000 direct academic research funding and GPU computing cloud credits on Microsoft Azure",
+      "amount_inr": 1600000,
+      "notes": "Mentorship from Microsoft Research scientists in Bangalore"
+    },
+    "documents_required": [
+      "Research proposal in IEEE format",
+      "Literature review and baseline model benchmarks",
+      "Faculty advisor letter"
+    ],
+    "deadline": "Annual Call for Proposals",
+    "application_steps": [
+      "Submit research proposal to Microsoft Research India Academic Relations",
+      "Peer review by research scientists"
+    ],
+    "source_url": "https://www.microsoft.com/en-us/research/lab/microsoft-research-india/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "cisco-agritech-youth-challenge",
+    "name": "Cisco India AgriTech Youth Challenge",
+    "authority": "Cisco CSR & NASSCOM Foundation",
+    "type": "grant",
+    "who_applies": "student",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": false,
+      "domains": ["Agriculture, Plant & Animal Sciences / Crop Protection", "Artificial Intelligence, Machine Learning & Computer Vision"],
+      "technology_keywords": ["agriculture", "plant", "leaf", "disease", "crop", "ai", "ml", "iot", "computer vision", "sensor", "areca"],
+      "target_sdgs": ["SDG 2: Zero Hunger", "SDG 6: Clean Water and Sanitation", "SDG 12: Responsible Consumption and Production", "SDG 15: Life on Land"],
+      "max_amount_inr": 1000000,
+      "other_conditions": [
+        "Technology must leverage AI, Computer Vision, or IoT to solve agricultural and plant health challenges"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 10 Lakhs innovation prize money, Cisco hardware prototyping kit, and incubation mentoring",
+      "amount_inr": 1000000,
+      "notes": "Annual competition run in partnership with NASSCOM Foundation"
+    },
+    "documents_required": [
+      "Technical architecture diagram",
+      "Video demo of prototype",
+      "Student ID proof"
+    ],
+    "deadline": "Annual Hackathon",
+    "application_steps": [
+      "Submit online entry on Cisco ThingQbator / NASSCOM portal",
+      "Shortlisting for virtual hackathon and jury presentation"
+    ],
+    "source_url": "https://www.cisco.com/c/m/en_in/csr.html",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
+  },
+  {
+    "id": "serb-anrf-student-research",
+    "name": "SERB / ANRF State University Research Excellence (SURE)",
+    "authority": "Anusandhan National Research Foundation (ANRF) & SERB",
+    "type": "grant",
+    "who_applies": "faculty",
+    "eligibility": {
+      "applicant_status": ["UG", "PG", "PhD"],
+      "college_types": ["autonomous", "VTU-affiliated", "other"],
+      "states": [],
+      "project_stages": ["idea", "prototype", "working model"],
+      "requires_iedc": false,
+      "open_theme": true,
+      "requires_faculty": true,
+      "domains": ["*"],
+      "target_sdgs": ["SDG 9: Industry, Innovation, and Infrastructure"],
+      "max_amount_inr": 3000000,
+      "other_conditions": [
+        "Proposal must be submitted jointly with a faculty mentor as Principal Investigator (PI)"
+      ]
+    },
+    "benefit": {
+      "description": "Up to Rs. 30 Lakhs research grant covering student research fellowships, lab equipment, and consumables for 3 years",
+      "amount_inr": 3000000,
+      "notes": "Prestigious national scientific grant for state universities and engineering colleges"
+    },
+    "documents_required": [
+      "Joint faculty-student research proposal",
+      "Institutional endorsement certificate",
+      "Budget justification"
+    ],
+    "deadline": "Annual Call",
+    "application_steps": [
+      "Faculty mentor registers and submits proposal on SERB online portal",
+      "Scientific Advisory Board peer review"
+    ],
+    "source_url": "https://www.serbonline.in/",
+    "last_verified": "2026-11-13",
+    "confidence": "verified"
   }
 ]

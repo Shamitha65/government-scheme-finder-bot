@@ -142,3 +142,54 @@ def test_action_checklist_generation(sample_schemes, persona_a):
     # Check that institutional coordination mentions IEDC or Institute
     titles = [item.title for item in checklist]
     assert any("Engage College" in t for t in titles)
+
+
+def test_areca_nut_leaf_disease_organization_matching(sample_schemes):
+    """
+    Test 10: User's Areca Nut Leaf Disease Detection project scenario:
+    - 1st Org (General Problem Statement, e.g. MSME): ELIGIBLE
+    - 2nd Org (Plant/Animal/Agriculture, e.g. ICAR-RAFTAAR): ELIGIBLE
+    - 3rd Org (AI/ML Only, e.g. MeitY TIDE 2.0): POSSIBLY ELIGIBLE (Applied Tech Track)
+    - 4th Org (Cybersecurity Only, e.g. C3iHub): NOT ELIGIBLE (Disqualified)
+    - 5th Org (FinTech Only, e.g. RBIH): NOT ELIGIBLE (Disqualified)
+    """
+    areca_profile = StudentProfile(
+        student_status="UG",
+        college_type="autonomous",
+        state="Karnataka",
+        project_title="Areca Nut Leaf Disease Detection using Deep Learning",
+        project_domain="Agriculture, Plant & Animal Sciences / Crop Protection",
+        project_stage="prototype",
+        has_iedc="yes",
+        faculty_mentor_available=True,
+        selected_sdgs=["SDG 2: Zero Hunger", "SDG 15: Life on Land"],
+        funding_amount_required=200000.0,
+        abstract="Deep learning convolutional neural network pipeline for early detection of areca nut yellow leaf and koleroga diseases directly from field leaf imagery.",
+        technical_approach="Custom CNN and YOLOv8 model trained on 5,000 Karnataka field images with mobile deployment.",
+        innovation_novelty="Lightweight offline edge inference model designed for low-connectivity farm environments."
+    )
+    report = run_engine(areca_profile, sample_schemes)
+
+    eligible_ids = {e.scheme.id for e in report.eligible_schemes}
+    possible_ids = {e.scheme.id for e in report.possibly_eligible_schemes}
+    disqualified_ids = {e.scheme.id for e in report.not_eligible_schemes}
+
+    # 1. General Problem Statement orgs approved
+    assert "msme-idea-hackathon" in eligible_ids
+    assert "dst-nidhi-prayas-prototype-grant" in eligible_ids
+
+    # 2. Plant / Agriculture orgs approved
+    assert "icar-raftaar-agribi-grant" in eligible_ids
+    assert "nabard-rural-innovation-fund" in eligible_ids
+
+    # 3. AI/ML only orgs partially approved under Applied Tech track
+    assert "meity-tide-2-innovation-grant" in possible_ids or "meity-tide-2-innovation-grant" in eligible_ids
+    assert "meity-genesis-deeptech-support" in possible_ids or "meity-genesis-deeptech-support" in eligible_ids
+
+    # 4. Cybersecurity strictly disqualified
+    assert "c3ihub-cybersecurity-grant" in disqualified_ids
+    assert "dsci-cyber-bharat-grant" in disqualified_ids
+
+    # 5. FinTech strictly disqualified
+    assert "rbih-swanidhi-fintech-grant" in disqualified_ids
+    assert "ifsca-gift-city-fintech-grant" in disqualified_ids
